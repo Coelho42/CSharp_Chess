@@ -27,6 +27,7 @@ namespace Xadrez
         bool PodeMover;
         bool firstPieceClicked = false;
         bool player1Turn = true;
+        bool podeComer;
 
         public Tabuleiro()
         {
@@ -241,14 +242,38 @@ namespace Xadrez
                     {
                         destinoPeca = (Peca)sender;
 
-                        if (destinoPeca.getcolourBlack() == null)
+                        if (destinoPeca.getcolourBlack() == null || false)
                         {
                             if (origemPeca.getpieceName() == "Peão")
                             {
                                 origemPeca = new Peao();
                                 PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                if (PodeMover)
+                                if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                {
+                                    destinoPeca.setpieceName("Peão");
+                                    destinoPeca.setcolourBlack(true);
+                                    destinoPeca.Image = pecaOrigemImage;
+                                    sender = destinoPeca;
+
+                                    for (int i = 0; i < tabuleiro.GetLength(0); i++)
+                                    {
+                                        for (int j = 0; j < tabuleiro.GetLength(1); j++)
+                                        {
+                                            if (tabuleiro[i, j].Location == pecaOrigemLocalizacao)
+                                            {
+                                                tabuleiro[i, j].BackColor = CorTransparente;
+                                                tabuleiro[i, j].Image = null;
+                                                tabuleiro[i, j].setcolourBlack(null);
+                                                tabuleiro[i, j].setpieceName(null);
+                                            }
+                                        }
+                                    }
+                                    firstPieceClicked = false;
+                                    player1Turn = false;
+                                }
+                                else if (destinoPeca.getcolourBlack() == false && PodeMover == true)
                                 {
                                     destinoPeca.setpieceName("Peão");
                                     destinoPeca.setcolourBlack(true);
@@ -552,14 +577,15 @@ namespace Xadrez
                         {
                             destinoPeca = (Peca)sender;
 
-                            if (destinoPeca.getcolourBlack() == null)
+                            if (destinoPeca.getcolourBlack() == null || true)
                             {
                                 if (origemPeca.getpieceName() == "Peão")
                                 {
                                     origemPeca = new Peao();
                                     PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                    podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                    if (PodeMover)
+                                    if (destinoPeca.getcolourBlack() == null && PodeMover == true)
                                     {
                                         destinoPeca.setpieceName("Peão");
                                         destinoPeca.setcolourBlack(false);
@@ -582,7 +608,30 @@ namespace Xadrez
                                         firstPieceClicked = false;
                                         player1Turn = true;
                                     }
-                                    else
+                                    else if (destinoPeca.getcolourBlack() == true && PodeMover == true)
+                                    {
+                                        destinoPeca.setpieceName("Peão");
+                                        destinoPeca.setcolourBlack(false);
+                                        destinoPeca.Image = pecaOrigemImage;
+                                        sender = destinoPeca;
+
+                                        for (int i = 0; i < tabuleiro.GetLength(0); i++)
+                                        {
+                                            for (int j = 0; j < tabuleiro.GetLength(1); j++)
+                                            {
+                                                if (tabuleiro[i, j].Location == destinoPeca.Location)
+                                                {
+                                                    tabuleiro[i, j].BackColor = CorTransparente;
+                                                    tabuleiro[i, j].Image = null;
+                                                    tabuleiro[i, j].setcolourBlack(null);
+                                                    tabuleiro[i, j].setpieceName(null);
+                                                }
+                                            }
+                                        }
+                                        firstPieceClicked = false;
+                                        player1Turn = true;
+                                    }
+                                    else 
                                     {
                                         for (int i = 0; i < tabuleiro.GetLength(0); i++)
                                         {

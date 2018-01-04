@@ -28,9 +28,9 @@ namespace Xadrez
             return true;
         }
 
-        public virtual void Comer(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
+        public virtual bool Comer(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
-            
+            return true;
         }
 
         public void setcolourBlack(bool? colourBlack)

@@ -18,8 +18,8 @@ namespace Xadrez
                 if (pecaOrigemLocalizacao.Y == 70)
                 {
                     if ((pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X) || (pecaOrigemLocalizacao.Y + 140 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X))
-                    {   
-                       return true;
+                    {
+                        return true;
                     }
                     else
                     {
@@ -36,9 +36,9 @@ namespace Xadrez
                     {
                         return false;
                     }
-                }                           
-            }                   
-            else 
+                }
+            }
+            else
             {
                 if (pecaOrigemLocalizacao.Y == 420)
                 {
@@ -66,83 +66,79 @@ namespace Xadrez
         }
 
 
-        public override void Comer(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
+        public override bool Comer(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
-
             if (player1Turn == true)
             {
-                if (tabuleiro[pecaDestinoLocalizacao.X + 70, pecaDestinoLocalizacao.Y + 70].getcolourBlack() == false)
+                for (int i = 0; i < tabuleiro.GetLength(0); i++)
                 {
-                    for (int i = 0; i < tabuleiro.GetLength(0); i++)
+                    for (int j = 0; j < tabuleiro.GetLength(1); j++)
                     {
-                        for (int j = 0; j < tabuleiro.GetLength(1); j++)
+                        if (tabuleiro[i, j].getcolourBlack() == false)
                         {
-                            if (tabuleiro[i, j].Location == pecaDestinoLocalizacao)
+                            if (pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 == pecaDestinoLocalizacao.X)
                             {
-                                tabuleiro[i, j].Image = null;
-                                tabuleiro[i, j].setcolourBlack(null);
-                                tabuleiro[i, j].setpieceName(null);                             
-                            }                          
-                        }
-                    }
-                }
-                else
-                {
-                    if (tabuleiro[pecaDestinoLocalizacao.X - 70, pecaDestinoLocalizacao.Y + 70].getcolourBlack() == false)
-                    {
-                        for (int i = 0; i < tabuleiro.GetLength(0); i++)
-                        {
-                            for (int j = 0; j < tabuleiro.GetLength(1); j++)
+                                return true;
+                            }
+
+                            else if (pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X)
                             {
-                                if (tabuleiro[i, j].Location == pecaDestinoLocalizacao)
-                                {
-                                    tabuleiro[i, j].Image = null;
-                                    tabuleiro[i, j].setcolourBlack(null);
-                                    tabuleiro[i, j].setpieceName(null);
-                                }
+                                return true;
+                            }
+
+                            else
+                            {
+                                return false;
                             }
                         }
                     }
-                }                                     
+                }
+                return false;
             }
-            else
+
+            else 
             {
-                if (tabuleiro[pecaDestinoLocalizacao.X + 70 , pecaDestinoLocalizacao.Y - 70].getcolourBlack() == true)
+                for (int i = 0; i < tabuleiro.GetLength(0); i++)
                 {
-                    for (int i = 0; i < tabuleiro.GetLength(0); i++)
+                    for (int j = 0; j < tabuleiro.GetLength(1); j++)
                     {
-                        for (int j = 0; j < tabuleiro.GetLength(1); j++)
+                        if (tabuleiro[i, j].getcolourBlack() == true)
                         {
-                            if (tabuleiro[i, j].Location == pecaDestinoLocalizacao)
+                            if (pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 == pecaDestinoLocalizacao.X)
                             {
-                                tabuleiro[i, j].Image = null;
-                                tabuleiro[i, j].setcolourBlack(null);
-                                tabuleiro[i, j].setpieceName(null);
+                                return true;
+                            }
+
+                            else if (pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X)
+                            {
+                                return true;
+                            }
+
+                            else
+                            {
+                                return false;
                             }
                         }
                     }
                 }
-                else
-                {
-                    if (tabuleiro[pecaDestinoLocalizacao.X - 70, pecaDestinoLocalizacao.Y - 70].getcolourBlack() == true)
-                    {
-                        for (int i = 0; i < tabuleiro.GetLength(0); i++)
-                        {
-                            for (int j = 0; j < tabuleiro.GetLength(1); j++)
-                            {
-                                if (tabuleiro[i, j].Location == pecaDestinoLocalizacao)
-                                {
-                                    tabuleiro[i, j].Image = null;
-                                    tabuleiro[i, j].setcolourBlack(null);
-                                    tabuleiro[i, j].setpieceName(null);
-                                }
-                            }
-                        }
-                    }                      
-                }
-            }         
+                return false;
+            }
         }
     }
 }
+    
 
+                
+                    
+                           
+                
+
+
+
+
+
+
+
+         
+               
    
