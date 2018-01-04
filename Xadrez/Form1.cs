@@ -10,11 +10,47 @@ using System.Windows.Forms;
 
 namespace Xadrez
 {
-    public partial class Form1 : Form
+    public partial class FormMenu : Form
     {
-        public Form1()
+        public FormMenu()
         {
             InitializeComponent();
+        }
+
+        private void FormMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void labelMaximize_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                labelMaximize.Text = "▄";
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                labelMaximize.Text = "█";
+            }
+        }
+
+        private void labelExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            Tabuleiro formTabuleiro = new Tabuleiro();
+            formTabuleiro.Show();
+            this.Hide();
         }
     }
 }

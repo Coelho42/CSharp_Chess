@@ -45,23 +45,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bispo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Cavalo.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Peao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Peca.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Rainha.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rei.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tabuleiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabuleiro.Designer.cs">
+      <DependentUpon>Tabuleiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Torre.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabuleiro.resx">
+      <DependentUpon>Tabuleiro.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +109,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlackBishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlackKing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlackKnight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlackPawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlackQueen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlackRook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhiteBishop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhiteKnight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhitePawn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhiteRook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhiteQueen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhiteKing.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
