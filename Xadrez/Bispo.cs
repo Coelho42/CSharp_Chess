@@ -11,100 +11,144 @@ namespace Xadrez
     {
         public override bool Mover(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
+            
+            bool possibleMove = false;
 
-            bool breakMove = false;
-
-            /*
-            if (pecaOrigemLocalizacao.Y - 70  == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 * c == pecaDestinoLocalizacao.X)
+            // up right
+            if (pecaOrigemLocalizacao.X > pecaDestinoLocalizacao.X) //ANDAR PARA A direita cima
             {
-                // Move-se para a diagonal superior esquerda
-                for (int i = pecaOrigemLocalizacao.Y; i >= pecaDestinoLocalizacao.Y; i = i - 70)
+                if (pecaOrigemLocalizacao.Y < pecaDestinoLocalizacao.Y)
                 {
-                    for (int j = pecaOrigemLocalizacao.X; j >= pecaDestinoLocalizacao.X; j = j + 70)
+                    if ((pecaOrigemLocalizacao.Y - pecaDestinoLocalizacao.Y) == (pecaDestinoLocalizacao.X - pecaOrigemLocalizacao.X)) // checks if they're diagonal
                     {
-                        if (tabuleiro[i, pecaDestinoLocalizacao.X].getcolourBlack() == null && tabuleiro[j, pecaDestinoLocalizacao.Y].getcolourBlack() == null)
+                        int y = pecaDestinoLocalizacao.X;
+                        for (int x = pecaDestinoLocalizacao.Y; x <= pecaOrigemLocalizacao.Y; x = x - 70)
                         {
-                            return true;
-                        }
-                        else
-                        {
-                            breakMove = true;
-                        }
+                            // checks if the piece checked is empty, if it is, sets the possibleMove to true
+                            if (tabuleiro[x, y].getpieceName() == null)
+                            {
+                                possibleMove = true;
+                            }
+                            else
+                            {
+                                possibleMove = false;
+                            }
 
-                        if (breakMove == true)
-                        {
-                            break;
+                            // if it couldnt move at least once, it stops checking
+                            if (possibleMove == false)
+                            {
+                                break;
+                            }
+                            y++;
                         }
                     }
                 }
             }
 
-            if (pecaOrigemLocalizacao.Y - 70  == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 * c == pecaDestinoLocalizacao.X)
+
+            // up left
+            if (pecaOrigemLocalizacao.X < pecaDestinoLocalizacao.X) //ANDAR PARA A esquerda cima
             {
-                // Move-se para a diagonal superior direita
-                for (int i = pecaOrigemLocalizacao.Y; i >= pecaDestinoLocalizacao.Y; i = i - 70)
+                if (pecaOrigemLocalizacao.Y < pecaDestinoLocalizacao.Y)
                 {
-                    for (int j = pecaOrigemLocalizacao.X; j >= pecaDestinoLocalizacao.X; j = j + 70)
+                    if ((pecaDestinoLocalizacao.Y - pecaOrigemLocalizacao.Y) == (pecaDestinoLocalizacao.X - pecaOrigemLocalizacao.X)) // checks if they're diagonal
                     {
-                        if (tabuleiro[i, pecaDestinoLocalizacao.X].getcolourBlack() == null && tabuleiro[j, pecaDestinoLocalizacao.Y].getcolourBlack() == null)
+                        int y = pecaDestinoLocalizacao.X;
+                        for (int x = pecaDestinoLocalizacao.Y; x <= pecaOrigemLocalizacao.Y; x = x - 70)
                         {
-                            return true;
-                        }
-                        else
-                        {
-                            breakMove = true;
+                            // checks if the piece checked is empty, if it is, sets the possibleMove to true
+                            if (tabuleiro[x, y].getpieceName() == null)
+                            {
+                                possibleMove = true;
+                            }
+                            else
+                            {
+                                possibleMove = false;
+                            }
+
+                            // if it couldnt move at least once, it stops checking
+                            if (possibleMove == false)
+                            {
+                                break;
+                            }
+                            y++;
                         }
                     }
-                }                        
-            }
-
-    */
-            if (pecaOrigemLocalizacao.Y + 140  == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 140 == pecaDestinoLocalizacao.X)
-            {
-                // Move-se para a diagonal superior esquerda
-                for (int i = pecaOrigemLocalizacao.Y; i >= pecaDestinoLocalizacao.Y; i = i + 70)
-                {
-                    for (int j = pecaOrigemLocalizacao.X; j >= pecaDestinoLocalizacao.X; j = j - 70)
-                    {
-                        if (tabuleiro[i, pecaDestinoLocalizacao.X].getcolourBlack() == null && tabuleiro[j, pecaDestinoLocalizacao.Y].getcolourBlack() == null)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }                   
                 }
-                return false;
-            }
-            else
-            {
-                return false;
             }
 
-            /*
-            else if (pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 * c == pecaDestinoLocalizacao.X)
+            // down right
+            if (pecaOrigemLocalizacao.X > pecaDestinoLocalizacao.X) //ANDAR PARA A esquerda cima
             {
-                // Move-se para a diagonal inferior direita
-                for (int i = pecaOrigemLocalizacao.Y; i >= pecaDestinoLocalizacao.Y; i = i - 70)
+                if (pecaOrigemLocalizacao.Y > pecaDestinoLocalizacao.Y)
                 {
-                    for (int j = pecaOrigemLocalizacao.X; j >= pecaDestinoLocalizacao.X; j = j + 70)
+                    if ((pecaOrigemLocalizacao.Y - pecaDestinoLocalizacao.Y) == (pecaOrigemLocalizacao.X - pecaDestinoLocalizacao.X)) // checks if they're diagonal
                     {
-                        if (tabuleiro[i, pecaDestinoLocalizacao.X].getcolourBlack() == null && tabuleiro[j, pecaDestinoLocalizacao.Y].getcolourBlack() == null)
+                        int y = pecaDestinoLocalizacao.X;
+                        for (int x = pecaDestinoLocalizacao.Y; x >= pecaOrigemLocalizacao.Y; x = x + 70)
                         {
-                            breakMove = true;
+                            // checks if the piece checked is empty, if it is, sets the possibleMove to true
+                            if (tabuleiro[x, y].getpieceName() == null)
+                            {
+                                possibleMove = true;
+                            }
+                            else
+                            {
+                                possibleMove = false;
+                            }
+
+                            // if it couldnt move at least once, it stops checking
+                            if (possibleMove == false)
+                            {
+                                break;
+                            }
+                            y++;
                         }
                     }
-                }                  
+                }
             }
 
+            // down left
+            if (pecaOrigemLocalizacao.X < pecaDestinoLocalizacao.X) //ANDAR PARA A esquerda cima
+            {
+                if (pecaOrigemLocalizacao.Y > pecaDestinoLocalizacao.Y)
+                {
+                    if ((pecaDestinoLocalizacao.Y - pecaOrigemLocalizacao.Y) == (pecaOrigemLocalizacao.X - pecaDestinoLocalizacao.Y)) // checks if they're diagonal
+                    {
+                        int y = pecaDestinoLocalizacao.X;
+                        for (int x = pecaDestinoLocalizacao.Y; x >= pecaOrigemLocalizacao.Y; x = x + 70)
+                        {
+                            // checks if the piece checked is empty, if it is, sets the possibleMove to true
+                            if (tabuleiro[x, y].getpieceName() == null)
+                            {
+                                possibleMove = true;
+                            }
+                            else
+                            {
+                                possibleMove = false;
+                            }
+
+                            // if it couldnt move at least once, it stops checking
+                            if (possibleMove == false)
+                            {
+                                break;
+                            }
+                            y++;
+                        }
+                    }
+                }
+            }
+
+            // If it's possible to move then execute the move method
+            if (possibleMove)
+            {
+                return true;        
+            }
             else
             {
                 return false;
-            }   
-            */
-        }                 
+            }          
+        }
     }
 }
 
