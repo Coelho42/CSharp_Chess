@@ -14,27 +14,61 @@ namespace Xadrez
             for (int i = 1; i < 9; i++)
             {
                 // Move-se para a cima
-                if (pecaOrigemLocalizacao.Y - 70*i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
+                if (pecaOrigemLocalizacao.Y - 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
                 {
                     return true;
                 }
                 // Move-se para baixo
-                else if (pecaOrigemLocalizacao.Y + 70*i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
+                else if (pecaOrigemLocalizacao.Y + 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
                 {
                     return true;
                 }
                 // Move-se para a esquerda
-                else if (pecaOrigemLocalizacao.Y == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70*i == pecaDestinoLocalizacao.X)
+                else if (pecaOrigemLocalizacao.Y == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 * i == pecaDestinoLocalizacao.X)
                 {
                     return true;
                 }
                 // Move-se para a direita
-                else if (pecaOrigemLocalizacao.Y == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X -70*i == pecaDestinoLocalizacao.X)
+                else if (pecaOrigemLocalizacao.Y == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 * i == pecaDestinoLocalizacao.X)
                 {
                     return true;
                 }
             }
             return false;
         }
+
+      
+        public override bool Comer(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
+        {
+            for (int i = 1; i < 9; i++)
+            {
+                // Move-se para a cima
+                if (pecaOrigemLocalizacao.Y - 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
+                {
+                    return true;
+                }
+                // Move-se para baixo
+                else if (pecaOrigemLocalizacao.Y + 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
+                {
+                    return true;
+                }
+                // Move-se para a esquerda
+                else if (pecaOrigemLocalizacao.Y == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 * i == pecaDestinoLocalizacao.X)
+                {
+                    return true;
+                }
+                // Move-se para a direita
+                else if (pecaOrigemLocalizacao.Y == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 * i == pecaDestinoLocalizacao.X)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }  
     }
 }
+
+
+
+    
+

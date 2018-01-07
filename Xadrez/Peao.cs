@@ -18,7 +18,7 @@ namespace Xadrez
                 if (pecaOrigemLocalizacao.Y == 70)
                 {
                     if ((pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X) || (pecaOrigemLocalizacao.Y + 140 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X))
-                    {
+                    {                  
                         return true;
                     }
                     else
@@ -29,7 +29,7 @@ namespace Xadrez
                 else
                 {
                     if (pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
-                    {
+                    {                  
                         return true;
                     }
                     else
@@ -70,58 +70,41 @@ namespace Xadrez
         {
             if (player1Turn == true)
             {
-                for (int i = 0; i < tabuleiro.GetLength(0); i++)
+                // Come a peça que estiver na diagonal esquerda dos peões pretos
+                if (pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y)
                 {
-                    for (int j = 0; j < tabuleiro.GetLength(1); j++)
-                    {
-                        if (tabuleiro[i, j].getcolourBlack() == false)
-                        {
-                            if (pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 == pecaDestinoLocalizacao.X)
-                            {
-                                return true;
-                            }
-
-                            else if (pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X)
-                            {
-                                return true;
-                            }
-
-                            else
-                            {
-                                return false;
-                            }
-                        }
-                    }
+                    return true;
                 }
-                return false;
+
+                // Come a peça que estiver na diagonal direita dos peões pretos
+                else if (pecaOrigemLocalizacao.X + 70 == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y)
+                {
+                    return true;
+                }
+
+                else
+                {
+                    return false;
+                }
             }
-
-            else 
+            else
             {
-                for (int i = 0; i < tabuleiro.GetLength(0); i++)
+                // Come a peça que estiver na diagonal esquerda dos peões brancos
+                if (pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y)
                 {
-                    for (int j = 0; j < tabuleiro.GetLength(1); j++)
-                    {
-                        if (tabuleiro[i, j].getcolourBlack() == true)
-                        {
-                            if (pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 == pecaDestinoLocalizacao.X)
-                            {
-                                return true;
-                            }
-
-                            else if (pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X)
-                            {
-                                return true;
-                            }
-
-                            else
-                            {
-                                return false;
-                            }
-                        }
-                    }
+                    return true;
                 }
-                return false;
+
+                // Come a peça que estiver na diagonal esquerda dos peões brancos
+                else if (pecaOrigemLocalizacao.X + 70 == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y)
+                {
+                    return true;
+                }
+
+                else
+                {
+                    return false;
+                }
             }
         }
     }

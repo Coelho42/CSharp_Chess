@@ -9,102 +9,70 @@ namespace Xadrez
 {
     class Bispo : Peca
     {
+
         public override bool Mover(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
-
-            bool breakMove = false;
-
-            /*
-            if (pecaOrigemLocalizacao.Y - 70  == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 * c == pecaDestinoLocalizacao.X)
+            for (int i = 1; i < 9; i++)
             {
-                // Move-se para a diagonal superior esquerda
-                for (int i = pecaOrigemLocalizacao.Y; i >= pecaDestinoLocalizacao.Y; i = i - 70)
+                // lado inferior esquerdo
+                if (pecaOrigemLocalizacao.Y + 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 * i == pecaDestinoLocalizacao.X)
                 {
-                    for (int j = pecaOrigemLocalizacao.X; j >= pecaDestinoLocalizacao.X; j = j + 70)
+                    if (tabuleiro[pecaDestinoLocalizacao.Y, pecaDestinoLocalizacao.X].getcolourBlack() == null)
                     {
-                        if (tabuleiro[i, pecaDestinoLocalizacao.X].getcolourBlack() == null && tabuleiro[j, pecaDestinoLocalizacao.Y].getcolourBlack() == null)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            breakMove = true;
-                        }
+                        return true;
+                    }                 
+                }
 
-                        if (breakMove == true)
-                        {
-                            break;
-                        }
-                    }
+                // lado inferior direito
+                else if (pecaOrigemLocalizacao.Y + 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 * i == pecaDestinoLocalizacao.X)
+                {
+                    return true;
+                }
+
+                // lado superior esquerdo
+                else if (pecaOrigemLocalizacao.Y - 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 * i == pecaDestinoLocalizacao.X)
+                {
+                    return true;
+                }
+
+                // lado superior direita
+                else if (pecaOrigemLocalizacao.Y - 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 * i == pecaDestinoLocalizacao.X)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public override bool Comer(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
+        {
+            // lado inferior esquerdo
+            if (pecaOrigemLocalizacao.Y + 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 * i == pecaDestinoLocalizacao.X)
+            {
+                if (tabuleiro[pecaDestinoLocalizacao.Y, pecaDestinoLocalizacao.X].getcolourBlack() == null)
+                {
+                    return true;
                 }
             }
 
-            if (pecaOrigemLocalizacao.Y - 70  == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 * c == pecaDestinoLocalizacao.X)
+            // lado inferior direito
+            else if (pecaOrigemLocalizacao.Y + 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 * i == pecaDestinoLocalizacao.X)
             {
-                // Move-se para a diagonal superior direita
-                for (int i = pecaOrigemLocalizacao.Y; i >= pecaDestinoLocalizacao.Y; i = i - 70)
-                {
-                    for (int j = pecaOrigemLocalizacao.X; j >= pecaDestinoLocalizacao.X; j = j + 70)
-                    {
-                        if (tabuleiro[i, pecaDestinoLocalizacao.X].getcolourBlack() == null && tabuleiro[j, pecaDestinoLocalizacao.Y].getcolourBlack() == null)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            breakMove = true;
-                        }
-                    }
-                }                        
+                return true;
             }
 
-    */
-            if (pecaOrigemLocalizacao.Y + 140  == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 140 == pecaDestinoLocalizacao.X)
+            // lado superior esquerdo
+            else if (pecaOrigemLocalizacao.Y - 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 * i == pecaDestinoLocalizacao.X)
             {
-                // Move-se para a diagonal superior esquerda
-                for (int i = pecaOrigemLocalizacao.Y; i >= pecaDestinoLocalizacao.Y; i = i + 70)
-                {
-                    for (int j = pecaOrigemLocalizacao.X; j >= pecaDestinoLocalizacao.X; j = j - 70)
-                    {
-                        if (tabuleiro[i, pecaDestinoLocalizacao.X].getcolourBlack() == null && tabuleiro[j, pecaDestinoLocalizacao.Y].getcolourBlack() == null)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }                   
-                }
-                return false;
-            }
-            else
-            {
-                return false;
+                return true;
             }
 
-            /*
-            else if (pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 * c == pecaDestinoLocalizacao.X)
+            // lado superior direita
+            else if (pecaOrigemLocalizacao.Y - 70 * i == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 * i == pecaDestinoLocalizacao.X)
             {
-                // Move-se para a diagonal inferior direita
-                for (int i = pecaOrigemLocalizacao.Y; i >= pecaDestinoLocalizacao.Y; i = i - 70)
-                {
-                    for (int j = pecaOrigemLocalizacao.X; j >= pecaDestinoLocalizacao.X; j = j + 70)
-                    {
-                        if (tabuleiro[i, pecaDestinoLocalizacao.X].getcolourBlack() == null && tabuleiro[j, pecaDestinoLocalizacao.Y].getcolourBlack() == null)
-                        {
-                            breakMove = true;
-                        }
-                    }
-                }                  
+                return true;
             }
-
-            else
-            {
-                return false;
-            }   
-            */
-        }                 
+            return false;
+        }
     }
 }
-
