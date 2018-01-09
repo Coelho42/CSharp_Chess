@@ -11,6 +11,8 @@ namespace Xadrez
     {
         public override bool Mover(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
+            #region Mover em Volta da Peca
+
             // Move-se para a cima
             if (pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
             {
@@ -21,12 +23,12 @@ namespace Xadrez
             {
                 return true;
             }
-            // Move-se para a esquerda
+            // Move-se para a direita
             else if (pecaOrigemLocalizacao.Y == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 == pecaDestinoLocalizacao.X)
             {
                 return true;
             }
-            // Move-se para a direita
+            // Move-se para a esquerda
             else if (pecaOrigemLocalizacao.Y == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X)
             {
                 return true;
@@ -54,11 +56,15 @@ namespace Xadrez
             else
             {
                 return false;
-            }          
+            }
+
+            #endregion
         }
 
         public override bool Comer(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
+            #region Mover em Volta da Peca
+
             // Move-se para a cima
             if (pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
             {
@@ -69,12 +75,12 @@ namespace Xadrez
             {
                 return true;
             }
-            // Move-se para a esquerda
+            // Move-se para a direita
             else if (pecaOrigemLocalizacao.Y == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X + 70 == pecaDestinoLocalizacao.X)
             {
                 return true;
             }
-            // Move-se para a direita
+            // Move-se para a esquerda
             else if (pecaOrigemLocalizacao.Y == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X)
             {
                 return true;
@@ -99,7 +105,12 @@ namespace Xadrez
             {
                 return true;
             }
-            return false;
+            else
+            {
+                return false;
+            }
+
+            #endregion
         }
     }
 }
