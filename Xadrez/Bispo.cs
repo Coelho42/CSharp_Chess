@@ -18,21 +18,14 @@ namespace Xadrez
             {
                 for (int j = 0; j < tabuleiro.GetLength(1); j++)
                 {
+                    #region Down Right
 
                     if (pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y)
                     {
-                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X + 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
-                        {
-                            canMove = false;
-                        }
-
-                        else
-                        {
-                            canMove = true;
-                        }
+                        canMove = true;
                     }
 
-                    if (pecaOrigemLocalizacao.Y + 140 == pecaDestinoLocalizacao.Y)
+                    else if (pecaOrigemLocalizacao.Y + 140 == pecaDestinoLocalizacao.Y)
                     {
                         if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X + 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
                         {
@@ -45,7 +38,7 @@ namespace Xadrez
                         }
                     }
 
-                    if (pecaOrigemLocalizacao.Y + 210 == pecaDestinoLocalizacao.Y)
+                    else if (pecaOrigemLocalizacao.Y + 210 == pecaDestinoLocalizacao.Y)
                     {
                         if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X + 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
                         {
@@ -63,7 +56,7 @@ namespace Xadrez
                         }
                     }
 
-                    if (pecaOrigemLocalizacao.Y + 280 == pecaDestinoLocalizacao.Y)
+                    else if (pecaOrigemLocalizacao.Y + 280 == pecaDestinoLocalizacao.Y)
                     {
                         if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X + 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
                         {
@@ -86,7 +79,7 @@ namespace Xadrez
                         }
                     }
 
-                    if (pecaOrigemLocalizacao.Y + 350 == pecaDestinoLocalizacao.Y)
+                    else if (pecaOrigemLocalizacao.Y + 350 == pecaDestinoLocalizacao.Y)
                     {
                         if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X + 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
                         {
@@ -114,7 +107,7 @@ namespace Xadrez
                         }
                     }
 
-                    if (pecaOrigemLocalizacao.Y + 420 == pecaDestinoLocalizacao.Y)
+                    else if (pecaOrigemLocalizacao.Y + 420 == pecaDestinoLocalizacao.Y)
                     {
                         if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X + 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
                         {
@@ -147,7 +140,7 @@ namespace Xadrez
                         }
                     }
 
-                    if (pecaOrigemLocalizacao.Y + 490 == pecaDestinoLocalizacao.Y)
+                    else if (pecaOrigemLocalizacao.Y + 490 == pecaDestinoLocalizacao.Y)
                     {
                         if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X + 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
                         {
@@ -182,18 +175,508 @@ namespace Xadrez
                         else
                         {
                             canMove = true;
-                        }                                           
+                        }
                     }
+
+                    #endregion
+
+                    #region Down Left
+
+                    if (pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y)
+                    {
+                        canMove = true;
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y + 140 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y + 210 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y + 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y + 280 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y + 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y + 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y + 350 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y + 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y + 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 280, pecaOrigemLocalizacao.Y + 280) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y + 420 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y + 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y + 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 280, pecaOrigemLocalizacao.Y + 280) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 350, pecaOrigemLocalizacao.Y + 350) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y + 490 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y + 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y + 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 280, pecaOrigemLocalizacao.Y + 280) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 350, pecaOrigemLocalizacao.Y + 350) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 420, pecaOrigemLocalizacao.Y + 420) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    #endregion
+
+                    #region Top Right
+
+                    if (pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y)
+                    {
+                        canMove = true;
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 140 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 210 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y - 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 280 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y - 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y - 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 350 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y - 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y - 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 280, pecaOrigemLocalizacao.Y - 280) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 420 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y - 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y - 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 280, pecaOrigemLocalizacao.Y - 280) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 350, pecaOrigemLocalizacao.Y - 350) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 490 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y - 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y - 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 280, pecaOrigemLocalizacao.Y - 280) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 350, pecaOrigemLocalizacao.Y - 350) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 420, pecaOrigemLocalizacao.Y - 420) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    #endregion
+                    #region Top Left
+
+                    if (pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y)
+                    {
+                        canMove = true;
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 140 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 210 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y - 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 280 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y - 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y - 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 350 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y - 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y - 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 280, pecaOrigemLocalizacao.Y - 280) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 420 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y - 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y - 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 280, pecaOrigemLocalizacao.Y - 280) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 350, pecaOrigemLocalizacao.Y - 350) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    else if (pecaOrigemLocalizacao.Y - 490 == pecaDestinoLocalizacao.Y)
+                    {
+                        if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 70, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 140, pecaOrigemLocalizacao.Y - 140) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 210, pecaOrigemLocalizacao.Y - 210) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 280, pecaOrigemLocalizacao.Y - 280) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 350, pecaOrigemLocalizacao.Y - 350) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X - 420, pecaOrigemLocalizacao.Y - 420) && tabuleiro[i, j].getcolourBlack() != null)
+                        {
+                            canMove = false;
+                        }
+
+                        else
+                        {
+                            canMove = true;
+                        }
+                    }
+
+                    #endregion
+
                     if (canMove == false)
                     {
                         break;
                     }
                 }
+
                 if (canMove == false)
                 {
                     break;
                 }
             }
+
             if (canMove == false)
             {
                 return false;
