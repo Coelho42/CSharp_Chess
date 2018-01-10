@@ -13,59 +13,97 @@ namespace Xadrez
 
         public override bool Mover(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
-            if (player1Turn == true)
+
+            bool canMove = false;
+
+            for (int i = 0; i < tabuleiro.GetLength(0); i++)
             {
-                if (pecaOrigemLocalizacao.Y == 70)
+                for (int j = 0; j < tabuleiro.GetLength(1); j++)
                 {
-                    if ((pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X) || (pecaOrigemLocalizacao.Y + 140 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X))
-                    {                  
-                        return true;
+                    if (player1Turn == true)
+                    {
+
+                        if (pecaOrigemLocalizacao.Y == 70)
+                        {
+                            if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y)
+                            {
+                                canMove = true;
+                            }
+
+                            else if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y + 140 == pecaDestinoLocalizacao.Y)
+                            {
+                                if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X, pecaOrigemLocalizacao.Y + 70) && tabuleiro[i, j].getcolourBlack() != null)
+                                {
+                                    canMove = false;
+                                }
+
+                                else
+                                {
+                                    canMove = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y)
+                            {
+                                canMove = true;
+                            }
+                        }
                     }
                     else
                     {
-                        return false;
+                        if (pecaOrigemLocalizacao.Y == 420)
+                        {
+                            if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y)
+                            {
+                                canMove = true;
+                            }
+
+                            else if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y - 140 == pecaDestinoLocalizacao.Y)
+                            {
+                                if (tabuleiro[i, j].Location == new Point(pecaOrigemLocalizacao.X, pecaOrigemLocalizacao.Y - 70) && tabuleiro[i, j].getcolourBlack() != null)
+                                {
+                                    canMove = false;
+                                }
+
+                                else
+                                {
+                                    canMove = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y)
+                            {
+                                canMove = true;
+                            }
+                        }
                     }
-                }
-                else
-                {
-                    if (pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
-                    {                  
-                        return true;
-                    }
-                    else
+
+                    if (canMove == false)
                     {
-                        return false;
+                        break;
                     }
                 }
+
+                if (canMove == false)
+                {
+                    break;
+                }
+            }
+
+            if (canMove == false)
+            {
+                return false;
             }
             else
             {
-                if (pecaOrigemLocalizacao.Y == 420)
-                {
-                    if ((pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X) || (pecaOrigemLocalizacao.Y - 140 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    if (pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
+                return true;
             }
         }
-
-
+                   
         public override bool Comer(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
             if (player1Turn == true)

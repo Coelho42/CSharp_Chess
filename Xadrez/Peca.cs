@@ -15,14 +15,7 @@ namespace Xadrez
         protected bool Alive = true;
         protected bool Check;
 
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="tabuleiro"></param>
-       /// <param name="pecaOrigemLocalizacao"></param>
-       /// <param name="pecaDestinoLocalizacao"></param>
-       /// <param name="player1Turn"></param>
-       /// <returns></returns>
+
         public virtual bool Mover(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
             return true;
