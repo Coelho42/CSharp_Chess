@@ -13,280 +13,318 @@ namespace Xadrez
     public partial class Tabuleiro : Form
     {
 
-        Peca[,] tabuleiro = new Peca[8, 8];
-        Size pictureBoxSize = new Size(70, 70);
-        int coordenadaX = 10;                                          //Localização inicial das pictureBoxes do tabuleiro no X
-        int coordenadaY = 0;                                           //Localização inicial das pictureBoxes do tabuleiro no Y
+        Peca[,] tabuleiro = new Peca[8, 8];                            // Array duplo do tipo peca 8 por 8
+        Size pictureBoxSize = new Size(70, 70);                        // Tamanho das pictureboxs 
+        int coordenadaX = 10;                                          // Localização inicial das pictureBoxes do tabuleiro no X
+        int coordenadaY = 0;                                           // Localização inicial das pictureBoxes do tabuleiro no Y
 
-        Peca origemPeca;
-        Peca destinoPeca;
-        Point pecaOrigemLocalizacao;
-        Image pecaOrigemImage;
-        Color CorTransparente;
+        Peca origemPeca;                                               // Peça clickada
+        Peca destinoPeca;                                              // Destino da peça clickada
+        Point pecaOrigemLocalizacao;                                   // Localização da peça clickada
+        Image pecaOrigemImage;                                         // Imagem da peça clickada
+        Color CorTransparente;                                         // Backgroundcolor transparente
 
-        bool PodeMover;
-        bool firstPieceClicked = false;
-        bool player1Turn = true;
-        bool podeComer;
+        bool PodeMover;                                                // Boolean que checka se pode mover a peça ou não
+        bool firstPieceClicked = false;                                // Boolean que checka se a peça foi clickada pela primeira vez
+        bool player1Turn = true;                                       // Boolean que checka se é a vez do jogador 1 ou do jogador 2
+        bool podeComer;                                                // Boolean que checka se a peça pode comer ou não
 
+        /// <summary>
+        /// Inicialização dos componentes da form tabuleiro
+        /// </summary>
         public Tabuleiro()
         {
-            InitializeComponent();
+            InitializeComponent();      // Inicializa os componentes da form                                         
         }
 
+        /// <summary>
+        /// Desenha o tabuleiro com todas as peças 
+        /// </summary>
+        /// <param name="sender"> Recebe as PicturesBoxes </param>
+        /// <param name="e"> Recebe o Evento a ser realizado </param>
         private void Tabuleiro_Load(object sender, EventArgs e)
         {
-            desenhaTabuleiro();
+            desenhaTabuleiro();     // Chama o método desenhaTabuleiro                                                           
         }
 
+        /// <summary>
+        /// Fecha o tabuleiro e abre o Menu
+        /// </summary>
+        /// <param name="sender"> Recebe a Label </param>
+        /// <param name="e"> Executa o Evento </param>
         private void labelExit_Click(object sender, EventArgs e)
         {
-            FormMenu formMenu = new FormMenu();
-            formMenu.Show();
-            this.Close();
+            FormMenu formMenu = new FormMenu();                 // Cria o Menu dentro da form Tabuleiro
+            formMenu.Show();                                    // Abre o Menu
+            this.Close();                                       // Fecha a form Tabuleiro
         }
 
+        /// <summary>
+        /// Minimiza a Form
+        /// </summary>
+        /// <param name="sender"> Recebe a Label </param>
+        /// <param name="e"> Executa o evento </param>
         private void labelMinimize_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Minimized;       // Minimiza a Form               
         }
 
+        /// <summary>
+        /// Desenha o Tabuleiro
+        /// </summary>
         public void desenhaTabuleiro()
         {
+            // Ciclo for para as colunas do tabuleiro
             for (int i = 0; i < tabuleiro.GetLength(0); i++)
             {
+                // Ciclo for para as linhas do tabuleiro
                 for (int j = 0; j < tabuleiro.GetLength(1); j++)
                 {
 
-                    tabuleiro[i, j] = new Peca();
-                    tabuleiro[i, j].setcolourBlack(null);
-                    tabuleiro[i, j].Size = pictureBoxSize;
+                    tabuleiro[i, j] = new Peca();                   // Cria uma nova Peca em todas coordenada do tabuleiro
+                    tabuleiro[i, j].setcolourBlack(null);           // Da o valor de null à cor dessas peças
+                    tabuleiro[i, j].Size = pictureBoxSize;          // Dá o size de 70 por 70 a cada PictureBox               
+                    tabuleiro[i, j].Click += pieceClick;            // Executa o método que permite as peças se moverem 
 
-                    //Preenche os espaços sem peças
-                    tabuleiro[i, j].Click += pieceClick;
-
-                    //Verifica se o i é 0
+                    // Se o valor i (colunas) for igual a 0 
                     if (i == 0)
                     {
-                        //Verifica se o j é 0 ou 7
+                        // Se o valor j (linhas) for igual a 0 ou 7
                         if (j == 0 || j == 7)
                         {
-                            tabuleiro[i, j] = new Torre();
-                            tabuleiro[i, j].setcolourBlack(true);
-                            tabuleiro[i, j].setpieceName("Torre");
-                            tabuleiro[i, j].Size = pictureBoxSize;
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackRook;
-                            tabuleiro[i, j].Click += pieceClick;
-                        }
+                            tabuleiro[i, j] = new Torre();                                       // Cria uma Peca do tipo Torre
+                            tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
+                            tabuleiro[i, j].setpieceName("Torre");                               // Dá à peca o nome de Torre
+                            tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
+                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackRook;       // Dá a imagem da torre à PictureBox
+                            tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
+                        }   
 
-                        //Verifica se o j é 1 ou 6
+                        // Se o valor j (linhas) for igual a 1 ou 6
                         if (j == 1 || j == 6)
                         {
-                            tabuleiro[i, j] = new Cavalo();
-                            tabuleiro[i, j].setcolourBlack(true);
-                            tabuleiro[i, j].setpieceName("Cavalo");
-                            tabuleiro[i, j].Size = pictureBoxSize;
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackKnight;
-                            tabuleiro[i, j].Click += pieceClick;
+                            tabuleiro[i, j] = new Cavalo();                                      // Cria uma Peca do tipo Cavalo
+                            tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
+                            tabuleiro[i, j].setpieceName("Cavalo");                              // Dá à peca o nome de Cavalo
+                            tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
+                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackKnight;     // Dá a imagem da torre à PictureBox
+                            tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
 
-                        //Verifica se o j é 2 ou 5
+                        // Se o valor j (linhas) for igual a 2 ou 5
                         if (j == 2 || j == 5)
                         {
-                            tabuleiro[i, j] = new Bispo();
-                            tabuleiro[i, j].setcolourBlack(true);
-                            tabuleiro[i, j].setpieceName("Bispo");
-                            tabuleiro[i, j].Size = pictureBoxSize;
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackBishop;
-                            tabuleiro[i, j].Click += pieceClick;
+                            tabuleiro[i, j] = new Bispo();                                       // Cria uma Peca do tipo Bispo
+                            tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
+                            tabuleiro[i, j].setpieceName("Bispo");                               // Dá à peca o nome de Bispo
+                            tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
+                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackBishop;     // Dá a imagem da torre à PictureBox
+                            tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
 
-                        //Verifica se o j é 3
+                        // Se o valor j (linhas) for igual a 3
                         if (j == 3)
                         {
-                            tabuleiro[i, j] = new Rainha();
-                            tabuleiro[i, j].setcolourBlack(true);
-                            tabuleiro[i, j].setpieceName("Rainha");
-                            tabuleiro[i, j].Size = pictureBoxSize;
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackQueen;
-                            tabuleiro[i, j].Click += pieceClick;
-                        }
+                            tabuleiro[i, j] = new Rainha();                                      // Cria uma Peca do tipo Rainha
+                            tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
+                            tabuleiro[i, j].setpieceName("Rainha");                              // Dá à peca o nome de Rainha
+                            tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
+                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackQueen;      // Dá a imagem da torre à PictureBox
+                            tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
+                        }       
 
-                        //Verifica se o j é 4
+                        // Se o valor j (linhas) for igual a 4
                         if (j == 4)
                         {
-                            tabuleiro[i, j] = new Rei();
-                            tabuleiro[i, j].setcolourBlack(true);
-                            tabuleiro[i, j].setpieceName("Rei");
-                            tabuleiro[i, j].Size = pictureBoxSize;
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackKing;
-                            tabuleiro[i, j].Click += pieceClick;
+                            tabuleiro[i, j] = new Rei();                                         // Cria uma Peca do tipo Rei
+                            tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
+                            tabuleiro[i, j].setpieceName("Rei");                                 // Dá à peca o nome de Rei
+                            tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
+                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackKing;       // Dá a imagem da torre à PictureBox
+                            tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
                     }
 
-                    //Verifica se o i é 1
+                    // Se o valor i (colunas) for igual a 1
                     if (i == 1)
                     {
-                        tabuleiro[i, j] = new Peao();
-                        tabuleiro[i, j].setcolourBlack(true);
-                        tabuleiro[i, j].setpieceName("Peão");
-                        tabuleiro[i, j].Size = pictureBoxSize;
-                        tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackPawn;
-                        tabuleiro[i, j].Click += pieceClick;
+                        tabuleiro[i, j] = new Peao();                                            // Cria uma Peca do tipo Peão
+                        tabuleiro[i, j].setcolourBlack(true);                                    // Dá à peca a cor preta
+                        tabuleiro[i, j].setpieceName("Peão");                                    // Dá à peca o nome de Peão
+                        tabuleiro[i, j].Size = pictureBoxSize;                                   // Dá à PictureBox o size 70 por 70
+                        tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackPawn;           // Dá a imagem da torre à PictureBox
+                        tabuleiro[i, j].Click += pieceClick;                                     // Executa o método que permite as peças se moverem 
                     }
 
-                    //Verifica se o i é 6
+                    // Se o valor i (colunas) for igual a 6
                     if (i == 6)
                     {
-                        tabuleiro[i, j] = new Peao();
-                        tabuleiro[i, j].setcolourBlack(false);
-                        tabuleiro[i, j].setpieceName("Peão");
-                        tabuleiro[i, j].Size = pictureBoxSize;
-                        tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhitePawn;
-                        tabuleiro[i, j].Click += pieceClick;
+                        tabuleiro[i, j] = new Peao();                                            // Cria uma Peca do tipo Peão
+                        tabuleiro[i, j].setcolourBlack(false);                                   // Dá à peca a cor branca
+                        tabuleiro[i, j].setpieceName("Peão");                                    // Dá à peca o nome de Peão
+                        tabuleiro[i, j].Size = pictureBoxSize;                                   // Dá à PictureBox o size 70 por 70
+                        tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhitePawn;           // Dá a imagem da torre à PictureBox
+                        tabuleiro[i, j].Click += pieceClick;                                     // Executa o método que permite as peças se moverem 
                     }
 
-                    //Verifica se o i é 7
+                    // Se o valor i (colunas) for igual a 7
                     if (i == 7)
                     {
-                        //Verifica se o j é 0 ou 7
+                        // Se o valor j (linhas) for igual a 0 ou 7
                         if (j == 0 || j == 7)
                         {
-                            tabuleiro[i, j] = new Torre();
-                            tabuleiro[i, j].setcolourBlack(false);
-                            tabuleiro[i, j].setpieceName("Torre");
-                            tabuleiro[i, j].Size = pictureBoxSize;
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteRook;
-                            tabuleiro[i, j].Click += pieceClick;
+                            tabuleiro[i, j] = new Torre();                                       // Cria uma Peca do tipo Torre
+                            tabuleiro[i, j].setcolourBlack(false);                               // Dá à peca a cor branca
+                            tabuleiro[i, j].setpieceName("Torre");                               // Dá à peca o nome de Torre
+                            tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
+                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteRook;       // Dá a imagem da torre à PictureBox
+                            tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
 
-                        //Verifica se o j é 1 ou 6
+                        // Se o valor j (linhas) for igual a 1 ou 6
                         if (j == 1 || j == 6)
                         {
-                            tabuleiro[i, j] = new Cavalo();
-                            tabuleiro[i, j].setcolourBlack(false);
-                            tabuleiro[i, j].setpieceName("Cavalo");
-                            tabuleiro[i, j].Size = pictureBoxSize;
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteKnight;
-                            tabuleiro[i, j].Click += pieceClick;
+                            tabuleiro[i, j] = new Cavalo();                                      // Cria uma Peca do tipo Cavalo
+                            tabuleiro[i, j].setcolourBlack(false);                               // Dá à peca a cor branca
+                            tabuleiro[i, j].setpieceName("Cavalo");                              // Dá à peca o nome de Cavalo
+                            tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
+                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteKnight;     // Dá a imagem da torre à PictureBox
+                            tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
 
                         }
 
-                        //Verifica se o j é 2 ou 5
+                        // Se o valor j (linhas) for igual a 2 ou 5
                         if (j == 2 || j == 5)
                         {
-                            tabuleiro[i, j] = new Bispo();
-                            tabuleiro[i, j].setcolourBlack(false);
-                            tabuleiro[i, j].setpieceName("Bispo");
-                            tabuleiro[i, j].Size = pictureBoxSize;
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteBishop;
-                            tabuleiro[i, j].Click += pieceClick;
+                            tabuleiro[i, j] = new Bispo();                                        // Cria uma Peca do tipo Bispo
+                            tabuleiro[i, j].setcolourBlack(false);                                // Dá à peca a cor branca
+                            tabuleiro[i, j].setpieceName("Bispo");                                // Dá à peca o nome de Bispo
+                            tabuleiro[i, j].Size = pictureBoxSize;                                // Dá à PictureBox o size 70 por 70
+                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteBishop;      // Dá a imagem da torre à PictureBox
+                            tabuleiro[i, j].Click += pieceClick;                                  // Executa o método que permite as peças se moverem 
                         }
 
-                        //Verifica se o j é 4
+                        // Se o valor j (linhas) for igual a 3
                         if (j == 3)
                         {
-                            tabuleiro[i, j] = new Rainha();
-                            tabuleiro[i, j].setcolourBlack(false);
-                            tabuleiro[i, j].setpieceName("Rainha");
-                            tabuleiro[i, j].Size = pictureBoxSize;
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteQueen;
-                            tabuleiro[i, j].Click += pieceClick;
+                            tabuleiro[i, j] = new Rainha();                                       // Cria uma Peca do tipo Rainha
+                            tabuleiro[i, j].setcolourBlack(false);                                // Dá à peca a cor branca
+                            tabuleiro[i, j].setpieceName("Rainha");                               // Dá à peca o nome de Rainha
+                            tabuleiro[i, j].Size = pictureBoxSize;                                // Dá à PictureBox o size 70 por 70
+                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteQueen;       // Dá a imagem da torre à PictureBox
+                            tabuleiro[i, j].Click += pieceClick;                                  // Executa o método que permite as peças se moverem 
                         }
 
-                        //Verifica se o j é 3
+                        // Se o valor j (linhas) for igual a 4
                         if (j == 4)
                         {
-                            tabuleiro[i, j] = new Rei();
-                            tabuleiro[i, j].setcolourBlack(false);
-                            tabuleiro[i, j].setpieceName("Rei");
-                            tabuleiro[i, j].Size = pictureBoxSize;
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteKing;
-                            tabuleiro[i, j].Click += pieceClick;
+                            tabuleiro[i, j] = new Rei();                                          // Cria uma Peca do tipo Rei
+                            tabuleiro[i, j].setcolourBlack(false);                                // Dá à peca a cor branca
+                            tabuleiro[i, j].setpieceName("Rei");                                  // Dá à peca o nome de Rei
+                            tabuleiro[i, j].Size = pictureBoxSize;                                // Dá à PictureBox o size 70 por 70
+                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteKing;        // Dá a imagem da torre à PictureBox
+                            tabuleiro[i, j].Click += pieceClick;                                  // Executa o método que permite as peças se moverem 
                         }
                     }
 
-                    //Verifica se o valor de i é par
+                    // Verifica se o valor de i (colunas) é par
                     if (i % 2 == 0)
                     {
-                        //Verifica se o valor de j é par
+                        //Verifica se o valor de j (linhas) é par
                         if (j % 2 == 0)
                         {
-                            tabuleiro[i, j].BackColor = Color.DarkRed;
+                            tabuleiro[i, j].BackColor = Color.DarkRed;      // Se ambas forem par o backgroundcolor fica vermelho      
                         }
                         else
                         {
-                            tabuleiro[i, j].BackColor = Color.LightGray;
+                            tabuleiro[i, j].BackColor = Color.LightGray;    // Se não, o backgroundcolor fica vermelho      
                         }
                     }
                     else
                     {
-                        //Verifica se o valor de j é par
+                        // Verifica se o valor de j (linhas) é par
                         if (j % 2 == 0)
                         {
-                            tabuleiro[i, j].BackColor = Color.LightGray;
+                            tabuleiro[i, j].BackColor = Color.LightGray;    // Se i for impar e j par, o backgroundcolor fica vermelho   
                         }
                         else
                         {
-                            tabuleiro[i, j].BackColor = Color.DarkRed;
+                            tabuleiro[i, j].BackColor = Color.DarkRed;      // Se não, o backgroundcolor fica vermelho   
                         }
                     }
 
-                    tabuleiro[i, j].Size = pictureBoxSize;          //Dá o valor do Size previamente definido à PictureBox
-                    tabuleiro[i, j].Location = new Point(coordenadaX, coordenadaY);     //Dá o valor da localização previamente definido à PictureBox
-                    coordenadaX += 70;        //Incrementa o valor do X da localização
+                    tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
+                    tabuleiro[i, j].Location = new Point(coordenadaX, coordenadaY);      // Dá o valor da localização à PictureBox
+                    coordenadaX += 70;                                                   // Incrementa o valor do X na localização
 
-                    tabuleiro[i, j].SizeMode = PictureBoxSizeMode.CenterImage;     //Define o modo de apresentação da imagem de cada PictureBox
-                    panelFill.Controls.Add(tabuleiro[i, j]);                        //Adiciona a PictureBox ao panelFill(painel do meio)
+                    tabuleiro[i, j].SizeMode = PictureBoxSizeMode.CenterImage;           // Define o modo de apresentação da imagem de cada PictureBox
+                    panelFill.Controls.Add(tabuleiro[i, j]);                             // Adiciona a PictureBox ao panelFill (painel do meio)
                 }
-                coordenadaX = 10;             //Reseta o valor de X
-                coordenadaY += 70;            //Incrementa o valor de Y
+                coordenadaX = 10;             // Reseta o valor de X
+                coordenadaY += 70;            // Incrementa o valor de Y
             }
         }
 
+        /// <summary>
+        /// Método click que permite que as peças se movam
+        /// </summary>
+        /// <param name="sender"> Recebe a Peça </param>
+        /// <param name="e"> Executa o evento de Mover a Peça </param>
         private void pieceClick(object sender, EventArgs e)
         {
+            // Verifica se é o turno do jogador 1
             if (player1Turn == true)
             {
+                // Verifica se a peça clickada já foi clickada pelo jogador
                 if (firstPieceClicked == false)
                 {
-                    origemPeca = (Peca)sender;
-                    if (origemPeca.getcolourBlack() == true)
+                    origemPeca = (Peca)sender;                             // Toma o valor do sender
+
+                    // Se a peça selecionada for preta
+                    if (origemPeca.getcolourBlack() == true)                
                     {
-                        pecaOrigemLocalizacao = origemPeca.Location;
-                        pecaOrigemImage = origemPeca.Image;
-                        CorTransparente = origemPeca.BackColor;
-                        origemPeca.BackColor = Color.Green;
-                        sender = origemPeca;
-                        firstPieceClicked = true;
+                        pecaOrigemLocalizacao = origemPeca.Location;       // Toma o valor da localização da Peça selecionada
+                        pecaOrigemImage = origemPeca.Image;                // Toma o valor da imagem da Peça selecionada 
+                        CorTransparente = origemPeca.BackColor;            // Toma o valor da backcolour da imagem da Peça selecionada
+                        origemPeca.BackColor = Color.Green;                // Toma o valor de verde
+                        sender = origemPeca;                               // Toma o valor da Peça selecionada
+                        firstPieceClicked = true;                          // Toma o valor de true
                     }
                 }
+                // Se a peça clickada não foi a primeira a ser selecionada
                 else
                 {
+                    // Verifica se é o turno do jogador 1
                     if (player1Turn == true)
                     {
-                        destinoPeca = (Peca)sender;
+                        destinoPeca = (Peca)sender;                        // Toma o valor do sender
 
+                        // Se a peça selecionada for diferente da cor preta
                         if (destinoPeca.getcolourBlack() != true)
                         {
+                            // Se a peça selecionada for um Peão
                             if (origemPeca.getpieceName() == "Peão")
                             {
-                                origemPeca = new Peao();
+                                origemPeca = new Peao();            // Toma o valor de um novo Peão
                              
-                                PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
-                                podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);                                
+                                PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça pode-se mover ou não
+                                podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça comer outra Peça ou não                            
 
+                                // Se a peça para onde o jogador se quer mover for null e se o bool PodeMover for true
                                 if (destinoPeca.getcolourBlack() == null && PodeMover == true)
                                 {
-                                    destinoPeca.setpieceName("Peão");
-                                    destinoPeca.setcolourBlack(true);
-                                    destinoPeca.Image = pecaOrigemImage;
-                                    sender = destinoPeca;
+                                    destinoPeca.setpieceName("Peão");       // Dá o nome ao destino da Peça
+                                    destinoPeca.setcolourBlack(true);       // Dá a cor preta ao destino da Peça
+                                    destinoPeca.Image = pecaOrigemImage;    // Toma o valor da imagem da Peça selecionada
+                                    sender = destinoPeca;                   // Toma o valor do destino da peça
 
+                                    // Ciclo for para as colunas do tabuleiro
                                     for (int i = 0; i < tabuleiro.GetLength(0); i++)
                                     {
+                                        // Ciclo for para as linhas do tabuleiro
                                         for (int j = 0; j < tabuleiro.GetLength(1); j++)
                                         {
+                                            // Se 
                                             if (tabuleiro[i, j].Location == pecaOrigemLocalizacao)
                                             {
                                                 tabuleiro[i, j].BackColor = CorTransparente;
