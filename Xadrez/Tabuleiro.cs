@@ -14,6 +14,8 @@ namespace Xadrez
     {
 
         Peca[,] tabuleiro = new Peca[8, 8];                            // Array duplo do tipo peca 8 por 8
+        Peca[,] BlackPiecesPosition = new Peca[4, 4];                  // Array duplo do tipo peca 4 por 4 para a posição inicial das peças pretas
+        Peca[,] WhitePiecesPosition = new Peca[4, 4];                  // Array duplo do tipo peca 4 por 4, para a posição inicial das peças brancas
         Size pictureBoxSize = new Size(70, 70);                        // Tamanho das pictureboxs 
         int coordenadaX = 10;                                          // Localização inicial das pictureBoxes do tabuleiro no X
         int coordenadaY = 0;                                           // Localização inicial das pictureBoxes do tabuleiro no Y
@@ -29,6 +31,16 @@ namespace Xadrez
         bool player1Turn = true;                                       // Boolean que checka se é a vez do jogador 1 ou do jogador 2
         bool podeComer;                                                // Boolean que checka se a peça pode comer ou não
 
+        int contadorBrancoI = 0;                       
+        int contadorBrancoJ = 0;                         
+        int contadorTabuleiroBrancoI = 7;
+        int contadorTabuleiroBrancoJ = 0;
+
+        int contadorPretoI = 0;                         
+        int contadorPretoJ = 0;                         
+        int contadorTabuleiroPretoI = 0;                               
+        int contadorTabuleiroPretoJ = 0;                               
+        
         /// <summary>
         /// Inicialização dos componentes da form tabuleiro
         /// </summary>
@@ -44,7 +56,11 @@ namespace Xadrez
         /// <param name="e"> Recebe o Evento a ser realizado </param>
         private void Tabuleiro_Load(object sender, EventArgs e)
         {
-            desenhaTabuleiro();     // Chama o método desenhaTabuleiro                                                           
+            desenhaTabuleiro();             // Desenha o tabuleiro
+            BlackPiecesStartLocation();     // Chama o método que faz com que as peças começem fora do tabuleiro
+            WhitePiecesStartLocation();     // Chama o método que faz com que as peças começem fora do tabuleiro
+            timerBlackPieces.Start();       // Timer que faz a animação das peças Pretas   
+            timerWhitePieces.Start();       // Timer que faz a animação das peças Brancas
         }
 
         /// <summary>
@@ -96,9 +112,8 @@ namespace Xadrez
                             tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
                             tabuleiro[i, j].setpieceName("Torre");                               // Dá à peca o nome de Torre
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackRook;       // Dá a imagem da torre à PictureBox
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
-                        }   
+                        }
 
                         // Se o valor j (linhas) for igual a 1 ou 6
                         if (j == 1 || j == 6)
@@ -107,7 +122,6 @@ namespace Xadrez
                             tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
                             tabuleiro[i, j].setpieceName("Cavalo");                              // Dá à peca o nome de Cavalo
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackKnight;     // Dá a imagem da torre à PictureBox
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
 
@@ -118,7 +132,6 @@ namespace Xadrez
                             tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
                             tabuleiro[i, j].setpieceName("Bispo");                               // Dá à peca o nome de Bispo
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackBishop;     // Dá a imagem da torre à PictureBox
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
 
@@ -129,9 +142,8 @@ namespace Xadrez
                             tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
                             tabuleiro[i, j].setpieceName("Rainha");                              // Dá à peca o nome de Rainha
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackQueen;      // Dá a imagem da torre à PictureBox
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
-                        }       
+                        }
 
                         // Se o valor j (linhas) for igual a 4
                         if (j == 4)
@@ -140,7 +152,6 @@ namespace Xadrez
                             tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
                             tabuleiro[i, j].setpieceName("Rei");                                 // Dá à peca o nome de Rei
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackKing;       // Dá a imagem da torre à PictureBox
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
                     }
@@ -152,7 +163,6 @@ namespace Xadrez
                         tabuleiro[i, j].setcolourBlack(true);                                    // Dá à peca a cor preta
                         tabuleiro[i, j].setpieceName("Peão");                                    // Dá à peca o nome de Peão
                         tabuleiro[i, j].Size = pictureBoxSize;                                   // Dá à PictureBox o size 70 por 70
-                        tabuleiro[i, j].Image = Xadrez.Properties.Resources.BlackPawn;           // Dá a imagem da torre à PictureBox
                         tabuleiro[i, j].Click += pieceClick;                                     // Executa o método que permite as peças se moverem 
                     }
 
@@ -163,7 +173,6 @@ namespace Xadrez
                         tabuleiro[i, j].setcolourBlack(false);                                   // Dá à peca a cor branca
                         tabuleiro[i, j].setpieceName("Peão");                                    // Dá à peca o nome de Peão
                         tabuleiro[i, j].Size = pictureBoxSize;                                   // Dá à PictureBox o size 70 por 70
-                        tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhitePawn;           // Dá a imagem da torre à PictureBox
                         tabuleiro[i, j].Click += pieceClick;                                     // Executa o método que permite as peças se moverem 
                     }
 
@@ -177,7 +186,6 @@ namespace Xadrez
                             tabuleiro[i, j].setcolourBlack(false);                               // Dá à peca a cor branca
                             tabuleiro[i, j].setpieceName("Torre");                               // Dá à peca o nome de Torre
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteRook;       // Dá a imagem da torre à PictureBox
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
 
@@ -188,7 +196,6 @@ namespace Xadrez
                             tabuleiro[i, j].setcolourBlack(false);                               // Dá à peca a cor branca
                             tabuleiro[i, j].setpieceName("Cavalo");                              // Dá à peca o nome de Cavalo
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteKnight;     // Dá a imagem da torre à PictureBox
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
 
                         }
@@ -200,7 +207,6 @@ namespace Xadrez
                             tabuleiro[i, j].setcolourBlack(false);                                // Dá à peca a cor branca
                             tabuleiro[i, j].setpieceName("Bispo");                                // Dá à peca o nome de Bispo
                             tabuleiro[i, j].Size = pictureBoxSize;                                // Dá à PictureBox o size 70 por 70
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteBishop;      // Dá a imagem da torre à PictureBox
                             tabuleiro[i, j].Click += pieceClick;                                  // Executa o método que permite as peças se moverem 
                         }
 
@@ -211,7 +217,6 @@ namespace Xadrez
                             tabuleiro[i, j].setcolourBlack(false);                                // Dá à peca a cor branca
                             tabuleiro[i, j].setpieceName("Rainha");                               // Dá à peca o nome de Rainha
                             tabuleiro[i, j].Size = pictureBoxSize;                                // Dá à PictureBox o size 70 por 70
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteQueen;       // Dá a imagem da torre à PictureBox
                             tabuleiro[i, j].Click += pieceClick;                                  // Executa o método que permite as peças se moverem 
                         }
 
@@ -222,7 +227,6 @@ namespace Xadrez
                             tabuleiro[i, j].setcolourBlack(false);                                // Dá à peca a cor branca
                             tabuleiro[i, j].setpieceName("Rei");                                  // Dá à peca o nome de Rei
                             tabuleiro[i, j].Size = pictureBoxSize;                                // Dá à PictureBox o size 70 por 70
-                            tabuleiro[i, j].Image = Xadrez.Properties.Resources.WhiteKing;        // Dá a imagem da torre à PictureBox
                             tabuleiro[i, j].Click += pieceClick;                                  // Executa o método que permite as peças se moverem 
                         }
                     }
@@ -254,14 +258,195 @@ namespace Xadrez
                     }
 
                     tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
+                    tabuleiro[i, j].SizeMode = PictureBoxSizeMode.CenterImage;          //Define o modo de apresentação da imagem de cada PictureBox
                     tabuleiro[i, j].Location = new Point(coordenadaX, coordenadaY);      // Dá o valor da localização à PictureBox
-                    coordenadaX += 70;                                                   // Incrementa o valor do X na localização
-
-                    tabuleiro[i, j].SizeMode = PictureBoxSizeMode.CenterImage;           // Define o modo de apresentação da imagem de cada PictureBox
-                    panelFill.Controls.Add(tabuleiro[i, j]);                             // Adiciona a PictureBox ao panelFill (painel do meio)
+                    panelFill.Controls.Add(tabuleiro[i, j]);
+                    coordenadaX += 70;                                                   // Incrementa o valor do X na localização                   
                 }
                 coordenadaX = 10;             // Reseta o valor de X
                 coordenadaY += 70;            // Incrementa o valor de Y
+            }
+        }
+
+        /// <summary>
+        /// Inicializa as peças pretas na sua posição inicial
+        /// </summary>
+        public void BlackPiecesStartLocation()
+        {
+            int positionX = 10;
+            int positionY = 0;
+
+            for (int i = 0; i < BlackPiecesPosition.GetLength(0); i++)
+            {
+                for (int j = 0; j < BlackPiecesPosition.GetLength(1); j++)
+                {
+                    BlackPiecesPosition[i, j] = new Peca();
+                    BlackPiecesPosition[i, j].Location = new Point(positionX, positionY);
+                    BlackPiecesPosition[i, j].Size = pictureBoxSize;
+
+                    if (i > 1)
+                    {
+                        BlackPiecesPosition[i, j].Image = Xadrez.Properties.Resources.BlackPawn;
+                        BlackPiecesPosition[i, j].BackColor = Color.Transparent;
+                    }
+                    else
+                    {
+                        if (i == 0)
+                        {
+                            if (j == 0)
+                            {
+                                BlackPiecesPosition[i, j].Image = Xadrez.Properties.Resources.BlackRook;
+                                BlackPiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            if (j == 1)
+                            {
+                                BlackPiecesPosition[i, j].Image = Xadrez.Properties.Resources.BlackKnight;
+                                BlackPiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            if (j == 2)
+                            {
+                                BlackPiecesPosition[i, j].Image = Xadrez.Properties.Resources.BlackBishop;
+                                BlackPiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            if (j == 3)
+                            {
+                                BlackPiecesPosition[i, j].Image = Xadrez.Properties.Resources.BlackQueen;
+                                BlackPiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+                        }
+                        else
+                        {
+                            if (j == 0)
+                            {
+                                BlackPiecesPosition[i, j].Image = Xadrez.Properties.Resources.BlackKing;
+                                BlackPiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            if (j == 1)
+                            {
+                                BlackPiecesPosition[i, j].Image = Xadrez.Properties.Resources.BlackBishop;
+                                BlackPiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            if (j == 2)
+                            {
+                                BlackPiecesPosition[i, j].Image = Xadrez.Properties.Resources.BlackKnight;
+                                BlackPiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            if (j == 3)
+                            {
+                                BlackPiecesPosition[i, j].Image = Xadrez.Properties.Resources.BlackRook;
+                                BlackPiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+                        }
+                    }
+                    BlackPiecesPosition[i, j].SizeMode = PictureBoxSizeMode.CenterImage;
+                    panelPlayer1.Controls.Add(BlackPiecesPosition[i, j]);
+                    positionX += 70;
+                }
+                positionX = 10;
+                positionY += 70;
+            }
+        }
+
+        /// <summary>
+        /// Inicializa as peças brancas nas suas posições iniciais
+        /// </summary>
+        public void WhitePiecesStartLocation()
+        {
+            int positionX = 10;     //Inicializa o X inicial das peças do lado branco que irá ser do lado direito do tabuleiro
+            int positionY = 0;    //Inicializa o Y inicial das peças do lado branco que irá ser do lado direito do tabuleiro
+
+            //ciclo for duplo para controlar o array das peças brancas
+            for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+            {
+                for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                {
+                    WhitePiecesPosition[i, j] = new Peca();                                  //Inicializa cada posição do array
+                    WhitePiecesPosition[i, j].Location = new Point(positionX, positionY);    //Define a localização à PictureBox
+                    WhitePiecesPosition[i, j].Size = pictureBoxSize;                         //Define o tamanho das PictureBox já previamente definido
+
+                    //Verifica se o i é maior que 1
+                    if (i > 1)
+                    {
+                        WhitePiecesPosition[i, j].Image = Xadrez.Properties.Resources.WhitePawn;
+                        WhitePiecesPosition[i, j].BackColor = Color.Transparent;
+
+                    }
+                    else
+                    {
+                        //Verifica se o i é igual a 0
+                        if (i == 0)
+                        {
+                            //Verifica se o j é igual a 0
+                            if (j == 0)
+                            {
+                                WhitePiecesPosition[i, j].Image = Xadrez.Properties.Resources.WhiteRook;
+                                WhitePiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            //Verifica se o j é igual a 1
+                            if (j == 1)
+                            {
+                                WhitePiecesPosition[i, j].Image = Xadrez.Properties.Resources.WhiteKnight;
+                                WhitePiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            //Verifica se o j é igual a 2
+                            if (j == 2)
+                            {
+                                WhitePiecesPosition[i, j].Image = Xadrez.Properties.Resources.WhiteBishop;
+                                WhitePiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            //Verifica se o j é igual a 3
+                            if (j == 3)
+                            {
+                                WhitePiecesPosition[i, j].Image = Xadrez.Properties.Resources.WhiteQueen;
+                                WhitePiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+                        }
+                        else
+                        {
+                            //Verifica se o j é igual a 0
+                            if (j == 0)
+                            {
+                                WhitePiecesPosition[i, j].Image = Xadrez.Properties.Resources.WhiteKing;
+                                WhitePiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            //Verifica se o j é igual a 1
+                            if (j == 1)
+                            {
+                                WhitePiecesPosition[i, j].Image = Xadrez.Properties.Resources.WhiteBishop;
+                                WhitePiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            //Verifica se o j é igual a 2
+                            if (j == 2)
+                            {
+                                WhitePiecesPosition[i, j].Image = Xadrez.Properties.Resources.WhiteKnight;
+                                WhitePiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+
+                            //Verifica se o j é igual a 3
+                            if (j == 3)
+                            {
+                                WhitePiecesPosition[i, j].Image = Xadrez.Properties.Resources.WhiteRook;
+                                WhitePiecesPosition[i, j].BackColor = Color.Transparent;
+                            }
+                        }
+                    }
+                    WhitePiecesPosition[i, j].SizeMode = PictureBoxSizeMode.CenterImage;    //Define o modo de apresentação da imagem de cada PictureBox
+                    panelPlayer2.Controls.Add(WhitePiecesPosition[i, j]);                      //Adiciona as pictureBox ao panelRight(painel da direita)
+                    positionX += 70;    //Incrementa o valor do x
+                }
+                positionX = 10;         //Faz reset ao valor de X
+                positionY += 70;        //Incrementa o valor de Y
             }
         }
 
@@ -281,7 +466,7 @@ namespace Xadrez
                     origemPeca = (Peca)sender;                             // Toma o valor do sender
 
                     // Se a peça selecionada for preta
-                    if (origemPeca.getcolourBlack() == true)                
+                    if (origemPeca.getcolourBlack() == true)
                     {
                         pecaOrigemLocalizacao = origemPeca.Location;       // Toma o valor da localização da Peça selecionada
                         pecaOrigemImage = origemPeca.Image;                // Toma o valor da imagem da Peça selecionada 
@@ -306,7 +491,7 @@ namespace Xadrez
                             if (origemPeca.getpieceName() == "Peão")
                             {
                                 origemPeca = new Peao();            // Toma o valor de um novo Peão
-                             
+
                                 PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça pode-se mover ou não
                                 podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça comer outra Peça ou não                            
 
@@ -741,7 +926,7 @@ namespace Xadrez
                                         firstPieceClicked = false;
                                     }
                                 }
-                            }                                                         
+                            }
                         }
                     }
                 }
@@ -1207,16 +1392,63 @@ namespace Xadrez
                                         }
                                     }
                                 }
-                            }                           
+                            }
                         }
                     }
                 }
             }
         }
 
-        private void panelTitle_Paint(object sender, PaintEventArgs e)
-        {
 
+        private void timerBlackPieces_Tick(object sender, EventArgs e)
+        {
+            tabuleiro[contadorTabuleiroPretoI, contadorTabuleiroPretoJ].Image = BlackPiecesPosition[contadorPretoI, contadorPretoJ].Image;
+            BlackPiecesPosition[contadorPretoI, contadorPretoJ].Image = null;
+            contadorTabuleiroPretoJ += 1;
+            contadorPretoJ += 1;
+
+            if (contadorPretoJ == 4)
+            {
+                contadorPretoJ = 0;
+                contadorPretoI += 1;
+            }
+
+            if (contadorTabuleiroPretoJ == 8)
+            {
+                contadorTabuleiroPretoI += 1;
+                contadorTabuleiroPretoJ = 0;
+            }
+
+            if (contadorTabuleiroPretoI == 2)
+            {
+                timerBlackPieces.Stop();
+            }
+        }
+
+
+        private void timerWhitePieces_Tick(object sender, EventArgs e)
+        {
+            tabuleiro[contadorTabuleiroBrancoI, contadorTabuleiroBrancoJ].Image = WhitePiecesPosition[contadorBrancoI, contadorBrancoJ].Image;
+            WhitePiecesPosition[contadorBrancoI, contadorBrancoJ].Image = null;          
+            contadorTabuleiroBrancoJ += 1;
+            contadorBrancoJ += 1;
+
+            if (contadorBrancoJ == 4)
+            {
+                contadorBrancoJ = 0;
+                contadorBrancoI += 1;
+            }
+
+            if (contadorTabuleiroBrancoJ == 8)
+            {
+                contadorTabuleiroBrancoI -= 1;
+                contadorTabuleiroBrancoJ = 0;
+            }
+
+            if (contadorTabuleiroBrancoI == 5)
+            {
+                timerWhitePieces.Stop();
+            }
         }
     }
 }
