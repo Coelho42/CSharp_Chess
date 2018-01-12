@@ -24,12 +24,14 @@ namespace Xadrez
         Peca destinoPeca;                                              // Destino da peça clickada
         Point pecaOrigemLocalizacao;                                   // Localização da peça clickada
         Image pecaOrigemImage;                                         // Imagem da peça clickada
+        Image pecaDestinoImage;                                        // Imagem da casa para onde a peça clickada se move
         Color CorTransparente;                                         // Backgroundcolor transparente
 
         bool PodeMover;                                                // Boolean que checka se pode mover a peça ou não
         bool firstPieceClicked = false;                                // Boolean que checka se a peça foi clickada pela primeira vez
         bool player1Turn = true;                                       // Boolean que checka se é a vez do jogador 1 ou do jogador 2
         bool podeComer;                                                // Boolean que checka se a peça pode comer ou não
+        bool Comeu;                                                    // Checka se a peça comeu
 
         int contadorBrancoI = 0;                       
         int contadorBrancoJ = 0;                         
@@ -509,7 +511,7 @@ namespace Xadrez
                                         // Ciclo for para as linhas do tabuleiro
                                         for (int j = 0; j < tabuleiro.GetLength(1); j++)
                                         {
-                                            // Se 
+                                            
                                             if (tabuleiro[i, j].Location == pecaOrigemLocalizacao)
                                             {
                                                 tabuleiro[i, j].BackColor = CorTransparente;
@@ -527,7 +529,8 @@ namespace Xadrez
                                 {
                                     destinoPeca.setpieceName("Peão");
                                     destinoPeca.setcolourBlack(true);
-                                    destinoPeca.Image = pecaOrigemImage;
+                                    pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
+                                    destinoPeca.Image = pecaOrigemImage;                                    
                                     sender = destinoPeca;
 
                                     for (int i = 0; i < tabuleiro.GetLength(0); i++)
@@ -541,6 +544,23 @@ namespace Xadrez
                                                 tabuleiro[i, j].setcolourBlack(null);
                                                 tabuleiro[i, j].setpieceName(null);
                                             }
+                                        }
+                                    }
+                                    for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                    {                                       
+                                        for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                        {
+                                            Comeu = false;
+                                            if (WhitePiecesPosition[i, j].Image == null)
+                                            {
+                                                WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                Comeu = true;
+                                                break;                                                
+                                            }
+                                        } 
+                                        if (Comeu == true)
+                                        {
+                                            break;
                                         }
                                     }
                                     firstPieceClicked = false;
@@ -590,7 +610,7 @@ namespace Xadrez
                                                     tabuleiro[i, j].setpieceName(null);
                                                 }
                                             }
-                                        }
+                                        }                                   
                                         firstPieceClicked = false;
                                         player1Turn = false;
                                     }
@@ -599,6 +619,7 @@ namespace Xadrez
                                     {
                                         destinoPeca.setpieceName("Cavalo");
                                         destinoPeca.setcolourBlack(true);
+                                        pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                         destinoPeca.Image = pecaOrigemImage;
                                         sender = destinoPeca;
 
@@ -615,10 +636,26 @@ namespace Xadrez
                                                 }
                                             }
                                         }
+                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        {
+                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            {
+                                                Comeu = false;
+                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                {
+                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    Comeu = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (Comeu == true)
+                                            {
+                                                break;
+                                            }
+                                        }
                                         firstPieceClicked = false;
                                         player1Turn = false;
                                     }
-
                                     else
                                     {
                                         for (int i = 0; i < tabuleiro.GetLength(0); i++)
@@ -673,6 +710,7 @@ namespace Xadrez
                                     {
                                         destinoPeca.setpieceName("Bispo");
                                         destinoPeca.setcolourBlack(true);
+                                        pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                         destinoPeca.Image = pecaOrigemImage;
                                         sender = destinoPeca;
 
@@ -687,6 +725,23 @@ namespace Xadrez
                                                     tabuleiro[i, j].setcolourBlack(null);
                                                     tabuleiro[i, j].setpieceName(null);
                                                 }
+                                            }
+                                        }
+                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        {
+                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            {
+                                                Comeu = false;
+                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                {
+                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    Comeu = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (Comeu == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         firstPieceClicked = false;
@@ -746,6 +801,7 @@ namespace Xadrez
                                     {
                                         destinoPeca.setpieceName("Torre");
                                         destinoPeca.setcolourBlack(true);
+                                        pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                         destinoPeca.Image = pecaOrigemImage;
                                         sender = destinoPeca;
 
@@ -760,6 +816,23 @@ namespace Xadrez
                                                     tabuleiro[i, j].setcolourBlack(null);
                                                     tabuleiro[i, j].setpieceName(null);
                                                 }
+                                            }
+                                        }
+                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        {
+                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            {
+                                                Comeu = false;
+                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                {
+                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    Comeu = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (Comeu == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         firstPieceClicked = false;
@@ -819,6 +892,7 @@ namespace Xadrez
                                     {
                                         destinoPeca.setpieceName("Rei");
                                         destinoPeca.setcolourBlack(true);
+                                        pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                         destinoPeca.Image = pecaOrigemImage;
                                         sender = destinoPeca;
 
@@ -833,6 +907,23 @@ namespace Xadrez
                                                     tabuleiro[i, j].setcolourBlack(null);
                                                     tabuleiro[i, j].setpieceName(null);
                                                 }
+                                            }
+                                        }
+                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        {
+                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            {
+                                                Comeu = false;
+                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                {
+                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    Comeu = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (Comeu == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         firstPieceClicked = false;
@@ -892,6 +983,7 @@ namespace Xadrez
                                     {
                                         destinoPeca.setpieceName("Rainha");
                                         destinoPeca.setcolourBlack(true);
+                                        pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                         destinoPeca.Image = pecaOrigemImage;
                                         sender = destinoPeca;
 
@@ -906,6 +998,23 @@ namespace Xadrez
                                                     tabuleiro[i, j].setcolourBlack(null);
                                                     tabuleiro[i, j].setpieceName(null);
                                                 }
+                                            }
+                                        }
+                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        {
+                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            {
+                                                Comeu = false;
+                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                {
+                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    Comeu = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (Comeu == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         firstPieceClicked = false;
@@ -991,6 +1100,7 @@ namespace Xadrez
                                     {
                                         destinoPeca.setpieceName("Peão");
                                         destinoPeca.setcolourBlack(false);
+                                        pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                         destinoPeca.Image = pecaOrigemImage;
                                         sender = destinoPeca;
 
@@ -1005,6 +1115,23 @@ namespace Xadrez
                                                     tabuleiro[i, j].setcolourBlack(null);
                                                     tabuleiro[i, j].setpieceName(null);
                                                 }
+                                            }
+                                        }
+                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        {
+                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            {
+                                                Comeu = false;
+                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                {
+                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    Comeu = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (Comeu == true)
+                                            {
+                                                break;
                                             }
                                         }
                                         firstPieceClicked = false;
@@ -1065,6 +1192,7 @@ namespace Xadrez
                                         {
                                             destinoPeca.setpieceName("Cavalo");
                                             destinoPeca.setcolourBlack(false);
+                                            pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                             destinoPeca.Image = pecaOrigemImage;
                                             sender = destinoPeca;
 
@@ -1079,6 +1207,23 @@ namespace Xadrez
                                                         tabuleiro[i, j].setcolourBlack(null);
                                                         tabuleiro[i, j].setpieceName(null);
                                                     }
+                                                }
+                                            }
+                                            for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                            {
+                                                for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                                {
+                                                    Comeu = false;
+                                                    if (WhitePiecesPosition[i, j].Image == null)
+                                                    {
+                                                        WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                        Comeu = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if (Comeu == true)
+                                                {
+                                                    break;
                                                 }
                                             }
                                             firstPieceClicked = false;
@@ -1138,6 +1283,7 @@ namespace Xadrez
                                         {
                                             destinoPeca.setpieceName("Bispo");
                                             destinoPeca.setcolourBlack(false);
+                                            pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                             destinoPeca.Image = pecaOrigemImage;
                                             sender = destinoPeca;
 
@@ -1152,6 +1298,23 @@ namespace Xadrez
                                                         tabuleiro[i, j].setcolourBlack(null);
                                                         tabuleiro[i, j].setpieceName(null);
                                                     }
+                                                }
+                                            }
+                                            for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                            {
+                                                for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                                {
+                                                    Comeu = false;
+                                                    if (WhitePiecesPosition[i, j].Image == null)
+                                                    {
+                                                        WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                        Comeu = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if (Comeu == true)
+                                                {
+                                                    break;
                                                 }
                                             }
                                             firstPieceClicked = false;
@@ -1211,6 +1374,7 @@ namespace Xadrez
                                         {
                                             destinoPeca.setpieceName("Torre");
                                             destinoPeca.setcolourBlack(false);
+                                            pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                             destinoPeca.Image = pecaOrigemImage;
                                             sender = destinoPeca;
 
@@ -1225,6 +1389,23 @@ namespace Xadrez
                                                         tabuleiro[i, j].setcolourBlack(null);
                                                         tabuleiro[i, j].setpieceName(null);
                                                     }
+                                                }
+                                            }
+                                            for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                            {
+                                                for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                                {
+                                                    Comeu = false;
+                                                    if (WhitePiecesPosition[i, j].Image == null)
+                                                    {
+                                                        WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                        Comeu = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if (Comeu == true)
+                                                {
+                                                    break;
                                                 }
                                             }
                                             firstPieceClicked = false;
@@ -1284,6 +1465,7 @@ namespace Xadrez
                                         {
                                             destinoPeca.setpieceName("Rei");
                                             destinoPeca.setcolourBlack(false);
+                                            pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                             destinoPeca.Image = pecaOrigemImage;
                                             sender = destinoPeca;
 
@@ -1298,6 +1480,23 @@ namespace Xadrez
                                                         tabuleiro[i, j].setcolourBlack(null);
                                                         tabuleiro[i, j].setpieceName(null);
                                                     }
+                                                }
+                                            }
+                                            for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                            {
+                                                for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                                {
+                                                    Comeu = false;
+                                                    if (WhitePiecesPosition[i, j].Image == null)
+                                                    {
+                                                        WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                        Comeu = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if (Comeu == true)
+                                                {
+                                                    break;
                                                 }
                                             }
                                             firstPieceClicked = false;
@@ -1357,6 +1556,7 @@ namespace Xadrez
                                         {
                                             destinoPeca.setpieceName("Rainha");
                                             destinoPeca.setcolourBlack(false);
+                                            pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                             destinoPeca.Image = pecaOrigemImage;
                                             sender = destinoPeca;
 
@@ -1371,6 +1571,23 @@ namespace Xadrez
                                                         tabuleiro[i, j].setcolourBlack(null);
                                                         tabuleiro[i, j].setpieceName(null);
                                                     }
+                                                }
+                                            }
+                                            for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                            {
+                                                for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                                {
+                                                    Comeu = false;
+                                                    if (WhitePiecesPosition[i, j].Image == null)
+                                                    {
+                                                        WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                        Comeu = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if (Comeu == true)
+                                                {
+                                                    break;
                                                 }
                                             }
                                             firstPieceClicked = false;
@@ -1398,7 +1615,6 @@ namespace Xadrez
                 }
             }
         }
-
 
         private void timerBlackPieces_Tick(object sender, EventArgs e)
         {

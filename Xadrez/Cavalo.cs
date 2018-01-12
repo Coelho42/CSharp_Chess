@@ -9,9 +9,24 @@ namespace Xadrez
 {
     class Cavalo : Peca
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        //*                                                                                                                    *//  
+        //*                                                      Métodos                                                       *//    
+        //*                                                                                                                    *//             
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Método mover do Cavalo
+        /// </summary>
+        /// <param name="tabuleiro"> Recebe o tabuleiro da Main </param>
+        /// <param name="pecaOrigemLocalizacao"> Localização da peça selecionada </param>
+        /// <param name="pecaDestinoLocalizacao"> Localização para onde a peça se vai mover no tabuleiro </param>
+        /// <param name="player1Turn"> Recebe o turno do jogador </param>
+        /// <returns> Se pode mover ou não </returns>
         public override bool Mover(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
-      
+            #region Mover em L
+
             // Movimenta a peça para 2 casas para cima e 1 para a esquerda
             if (pecaOrigemLocalizacao.Y - 140 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X)
             {
@@ -64,10 +79,22 @@ namespace Xadrez
             {
                 return false;
             }
+
+            #endregion
         }
 
+        /// <summary>
+        /// Método mover do Cavalo
+        /// </summary>
+        /// <param name="tabuleiro"> Recebe o tabuleiro da Main </param>
+        /// <param name="pecaOrigemLocalizacao"> Localização da peça selecionada </param>
+        /// <param name="pecaDestinoLocalizacao"> Localização para onde a peça se vai mover no tabuleiro </param>
+        /// <param name="player1Turn"> Recebe o turno do jogador </param>
+        /// <returns> Se pode mover ou não </returns>
         public override bool Comer(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
+            #region Mover em L
+
             // Movimenta a peça para 2 casas para cima e 1 para a esquerda
             if (pecaOrigemLocalizacao.Y - 140 == pecaDestinoLocalizacao.Y && pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X)
             {
@@ -120,6 +147,8 @@ namespace Xadrez
             {
                 return false;
             }
+
+            #endregion
         }
     }
 }

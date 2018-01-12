@@ -10,6 +10,20 @@ namespace Xadrez
     class Bispo : Peca
     {
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        //*                                                                                                                    *//  
+        //*                                                      Métodos                                                       *//    
+        //*                                                                                                                    *//             
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Método mover do Bispo
+        /// </summary>
+        /// <param name="tabuleiro"> Recebe o tabuleiro da Main </param>
+        /// <param name="pecaOrigemLocalizacao"> Localização da peça selecionada </param>
+        /// <param name="pecaDestinoLocalizacao"> Localização para onde a peça se vai mover no tabuleiro </param>
+        /// <param name="player1Turn"> Recebe o turno do jogador </param>
+        /// <returns> Se pode mover ou não </returns>
         public override bool Mover(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
             #region Mover na Diagonal
@@ -692,6 +706,14 @@ namespace Xadrez
         #endregion
         }
 
+        /// <summary>
+        /// Método comer do Bispo
+        /// </summary>
+        /// <param name="tabuleiro"> Recebe o tabuleiro da Main </param>
+        /// <param name="pecaOrigemLocalizacao"> Localização da peça selecionada </param>
+        /// <param name="pecaDestinoLocalizacao"> Localização para onde a peça se vai mover no tabuleiro </param>
+        /// <param name="player1Turn"> Recebe o turno do jogador </param>
+        /// <returns> Se pode comer ou não </returns>
         public override bool Comer(Peca[,] tabuleiro, Point pecaOrigemLocalizacao, Point pecaDestinoLocalizacao, bool player1Turn)
         {
             #region Mover na Diagonal

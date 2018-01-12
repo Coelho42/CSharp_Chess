@@ -60,9 +60,8 @@
             this.panelTitle.Controls.Add(this.labelTitle);
             this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitle.Location = new System.Drawing.Point(0, 0);
-            this.panelTitle.Margin = new System.Windows.Forms.Padding(4);
             this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(1280, 93);
+            this.panelTitle.Size = new System.Drawing.Size(960, 76);
             this.panelTitle.TabIndex = 6;
             // 
             // pictureBoxTitlePiece2
@@ -71,10 +70,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxTitlePiece2.BackgroundImage = global::Xadrez.Properties.Resources.Tittle_Image;
-            this.pictureBoxTitlePiece2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBoxTitlePiece2.Location = new System.Drawing.Point(735, -3);
+            this.pictureBoxTitlePiece2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxTitlePiece2.Location = new System.Drawing.Point(557, -2);
+            this.pictureBoxTitlePiece2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxTitlePiece2.Name = "pictureBoxTitlePiece2";
-            this.pictureBoxTitlePiece2.Size = new System.Drawing.Size(93, 93);
+            this.pictureBoxTitlePiece2.Size = new System.Drawing.Size(74, 76);
             this.pictureBoxTitlePiece2.TabIndex = 6;
             this.pictureBoxTitlePiece2.TabStop = false;
             // 
@@ -84,10 +84,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxTitlePiece1.BackgroundImage = global::Xadrez.Properties.Resources.Tittle_Image;
-            this.pictureBoxTitlePiece1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBoxTitlePiece1.Location = new System.Drawing.Point(494, -3);
+            this.pictureBoxTitlePiece1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxTitlePiece1.Location = new System.Drawing.Point(370, -2);
+            this.pictureBoxTitlePiece1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBoxTitlePiece1.Name = "pictureBoxTitlePiece1";
-            this.pictureBoxTitlePiece1.Size = new System.Drawing.Size(100, 93);
+            this.pictureBoxTitlePiece1.Size = new System.Drawing.Size(75, 76);
             this.pictureBoxTitlePiece1.TabIndex = 5;
             this.pictureBoxTitlePiece1.TabStop = false;
             // 
@@ -98,9 +99,10 @@
             this.labelExit.BackColor = System.Drawing.Color.Transparent;
             this.labelExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelExit.ForeColor = System.Drawing.Color.White;
-            this.labelExit.Location = new System.Drawing.Point(1258, 1);
+            this.labelExit.Location = new System.Drawing.Point(944, 1);
+            this.labelExit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelExit.Name = "labelExit";
-            this.labelExit.Size = new System.Drawing.Size(23, 25);
+            this.labelExit.Size = new System.Drawing.Size(17, 20);
             this.labelExit.TabIndex = 4;
             this.labelExit.Text = "x";
             this.labelExit.Click += new System.EventHandler(this.labelExit_Click);
@@ -112,9 +114,10 @@
             this.labelMinimize.BackColor = System.Drawing.Color.Transparent;
             this.labelMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMinimize.ForeColor = System.Drawing.Color.White;
-            this.labelMinimize.Location = new System.Drawing.Point(1231, 0);
+            this.labelMinimize.Location = new System.Drawing.Point(923, 0);
+            this.labelMinimize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMinimize.Name = "labelMinimize";
-            this.labelMinimize.Size = new System.Drawing.Size(20, 26);
+            this.labelMinimize.Size = new System.Drawing.Size(17, 22);
             this.labelMinimize.TabIndex = 3;
             this.labelMinimize.Text = "-";
             this.labelMinimize.Click += new System.EventHandler(this.labelMinimize_Click);
@@ -127,10 +130,9 @@
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Comic Sans MS", 28.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.White;
-            this.labelTitle.Location = new System.Drawing.Point(582, 9);
-            this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTitle.Location = new System.Drawing.Point(436, 7);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(160, 68);
+            this.labelTitle.Size = new System.Drawing.Size(128, 53);
             this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "Chess";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -142,10 +144,10 @@
             this.panelPlayer1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelPlayer1.CausesValidation = false;
             this.panelPlayer1.Controls.Add(this.labelPlayer1);
-            this.panelPlayer1.Location = new System.Drawing.Point(770, 0);
-            this.panelPlayer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelPlayer1.Location = new System.Drawing.Point(578, 0);
+            this.panelPlayer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelPlayer1.Name = "panelPlayer1";
-            this.panelPlayer1.Size = new System.Drawing.Size(507, 348);
+            this.panelPlayer1.Size = new System.Drawing.Size(380, 283);
             this.panelPlayer1.TabIndex = 161;
             // 
             // labelPlayer1
@@ -156,10 +158,9 @@
             this.labelPlayer1.BackColor = System.Drawing.Color.Transparent;
             this.labelPlayer1.Font = new System.Drawing.Font("Comic Sans MS", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPlayer1.ForeColor = System.Drawing.Color.Black;
-            this.labelPlayer1.Location = new System.Drawing.Point(369, 0);
-            this.labelPlayer1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPlayer1.Location = new System.Drawing.Point(277, 0);
             this.labelPlayer1.Name = "labelPlayer1";
-            this.labelPlayer1.Size = new System.Drawing.Size(138, 42);
+            this.labelPlayer1.Size = new System.Drawing.Size(111, 35);
             this.labelPlayer1.TabIndex = 2;
             this.labelPlayer1.Text = "Player 1";
             // 
@@ -169,10 +170,10 @@
             this.panelFill.Controls.Add(this.panelPlayer2);
             this.panelFill.Controls.Add(this.panelPlayer1);
             this.panelFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFill.Location = new System.Drawing.Point(0, 93);
-            this.panelFill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelFill.Location = new System.Drawing.Point(0, 76);
+            this.panelFill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelFill.Name = "panelFill";
-            this.panelFill.Size = new System.Drawing.Size(1280, 703);
+            this.panelFill.Size = new System.Drawing.Size(960, 571);
             this.panelFill.TabIndex = 162;
             // 
             // panelPlayer2
@@ -181,10 +182,10 @@
             this.panelPlayer2.BackgroundImage = global::Xadrez.Properties.Resources.Player2_Background;
             this.panelPlayer2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelPlayer2.Controls.Add(this.label1);
-            this.panelPlayer2.Location = new System.Drawing.Point(770, 352);
-            this.panelPlayer2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelPlayer2.Location = new System.Drawing.Point(578, 286);
+            this.panelPlayer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelPlayer2.Name = "panelPlayer2";
-            this.panelPlayer2.Size = new System.Drawing.Size(507, 346);
+            this.panelPlayer2.Size = new System.Drawing.Size(380, 281);
             this.panelPlayer2.TabIndex = 162;
             // 
             // label1
@@ -195,10 +196,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(368, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(276, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 42);
+            this.label1.Size = new System.Drawing.Size(111, 35);
             this.label1.TabIndex = 3;
             this.label1.Text = "Player 2";
             // 
@@ -214,15 +214,15 @@
             // 
             // Tabuleiro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Xadrez.Properties.Resources.Chess_Wallpapper;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1280, 796);
+            this.ClientSize = new System.Drawing.Size(960, 647);
             this.Controls.Add(this.panelFill);
             this.Controls.Add(this.panelTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Tabuleiro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabuleiro";
