@@ -33,16 +33,16 @@ namespace Xadrez
         bool podeComer;                                                // Boolean que checka se a peça pode comer ou não
         bool Comeu;                                                    // Checka se a peça comeu
 
-        int contadorBrancoI = 0;                       
-        int contadorBrancoJ = 0;                         
-        int contadorTabuleiroBrancoI = 7;
-        int contadorTabuleiroBrancoJ = 0;
+        int contadorBrancoI = 0;                                       // int para a animação das peças brancas
+        int contadorBrancoJ = 0;                                       // int para a animação das peças brancas
+        int contadorTabuleiroBrancoI = 7;                              // int para a animação das peças brancas
+        int contadorTabuleiroBrancoJ = 0;                              // int para a animação das peças brancas
 
-        int contadorPretoI = 0;                         
-        int contadorPretoJ = 0;                         
-        int contadorTabuleiroPretoI = 0;                               
-        int contadorTabuleiroPretoJ = 0;                               
-        
+        int contadorPretoI = 0;                                        // int para a animação das peças pretas          
+        int contadorPretoJ = 0;                                        // int para a animação das peças pretas
+        int contadorTabuleiroPretoI = 0;                               // int para a animação das peças pretas
+        int contadorTabuleiroPretoJ = 0;                               // int para a animação das peças pretas
+
         /// <summary>
         /// Inicialização dos componentes da form tabuleiro
         /// </summary>
@@ -260,7 +260,7 @@ namespace Xadrez
                     }
 
                     tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
-                    tabuleiro[i, j].SizeMode = PictureBoxSizeMode.CenterImage;          //Define o modo de apresentação da imagem de cada PictureBox
+                    tabuleiro[i, j].SizeMode = PictureBoxSizeMode.CenterImage;           //Define o modo de apresentação da imagem de cada PictureBox
                     tabuleiro[i, j].Location = new Point(coordenadaX, coordenadaY);      // Dá o valor da localização à PictureBox
                     panelFill.Controls.Add(tabuleiro[i, j]);
                     coordenadaX += 70;                                                   // Incrementa o valor do X na localização                   
@@ -275,15 +275,17 @@ namespace Xadrez
         /// </summary>
         public void BlackPiecesStartLocation()
         {
-            int positionX = 10;
-            int positionY = 0;
+            int positionX = 10;                                         // Posição inicial
+            int positionY = 0;                                          // Posição inicial
 
+            // Verifica se o valor de i (colunas)
             for (int i = 0; i < BlackPiecesPosition.GetLength(0); i++)
             {
+                // Verifica se o valor de j (linhas)
                 for (int j = 0; j < BlackPiecesPosition.GetLength(1); j++)
                 {
-                    BlackPiecesPosition[i, j] = new Peca();
-                    BlackPiecesPosition[i, j].Location = new Point(positionX, positionY);
+                    BlackPiecesPosition[i, j] = new Peca();                                    
+                    BlackPiecesPosition[i, j].Location = new Point(positionX, positionY);       
                     BlackPiecesPosition[i, j].Size = pictureBoxSize;
 
                     if (i > 1)
@@ -496,7 +498,7 @@ namespace Xadrez
 
                                 PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça pode-se mover ou não
                                 podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça comer outra Peça ou não                            
-
+                                
                                 // Se a peça para onde o jogador se quer mover for null e se o bool PodeMover for true
                                 if (destinoPeca.getcolourBlack() == null && PodeMover == true)
                                 {
@@ -580,7 +582,15 @@ namespace Xadrez
                                     }
                                     firstPieceClicked = false;
                                 }
-                            }
+                                if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
+                                {
+                                    destinoPeca.setcheck(true);
+                                }
+                                else
+                                {
+                                    destinoPeca.setcheck(true);
+                                }
+                            }                                
                             if (player1Turn == true)
                             {
                                 // Knight
@@ -669,6 +679,14 @@ namespace Xadrez
                                             }
                                         }
                                         firstPieceClicked = false;
+                                    }
+                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
+                                    {
+                                        destinoPeca.setcheck(true);
+                                    }
+                                    else
+                                    {
+                                        destinoPeca.setcheck(true);
                                     }
                                 }
                             }
@@ -761,6 +779,14 @@ namespace Xadrez
                                         }
                                         firstPieceClicked = false;
                                     }
+                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
+                                    {
+                                        destinoPeca.setcheck(true);
+                                    }
+                                    else
+                                    {
+                                        destinoPeca.setcheck(true);
+                                    }
                                 }
                             }
                             if (player1Turn == true)
@@ -851,6 +877,14 @@ namespace Xadrez
                                             }
                                         }
                                         firstPieceClicked = false;
+                                    }
+                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
+                                    {
+                                        destinoPeca.setcheck(true);
+                                    }
+                                    else
+                                    {
+                                        destinoPeca.setcheck(true);
                                     }
                                 }
                             }
@@ -943,6 +977,14 @@ namespace Xadrez
                                         }
                                         firstPieceClicked = false;
                                     }
+                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
+                                    {
+                                        destinoPeca.setcheck(true);
+                                    }
+                                    else
+                                    {
+                                        destinoPeca.setcheck(true);
+                                    }
                                 }
                             }
                             if (player1Turn == true)
@@ -1033,6 +1075,14 @@ namespace Xadrez
                                             }
                                         }
                                         firstPieceClicked = false;
+                                    }
+                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
+                                    {
+                                        destinoPeca.setcheck(true);
+                                    }
+                                    else
+                                    {
+                                        destinoPeca.setcheck(true);
                                     }
                                 }
                             }

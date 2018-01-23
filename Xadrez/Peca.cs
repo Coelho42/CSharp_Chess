@@ -26,8 +26,8 @@ namespace Xadrez
 
         protected string pieceName;     // String para o nome da peça
         protected bool? colourBlack;    // Boolean que checka se peça é preta ou branca
-        protected bool alive = true;    // Boolean que checka se a peça foi comida ou não
-
+        protected bool check;           // Bool para se a peça estiver em posição de check
+       
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
         //*                                                                                                                    *//  
         //*                                                      Métodos                                                       *//    
@@ -86,15 +86,15 @@ namespace Xadrez
             return pieceName;
         }
 
-        public void setalive(bool alive)
+        public void setcheck(bool check)
         {
-            this.alive = alive;
+            this.check = check;
         }
 
-        public bool getalive()
+        public bool getcheck()
         {
-            return alive;
-        }  
+            return check;
+        }
     }
 }
     
