@@ -27,7 +27,7 @@ namespace Xadrez
         protected string pieceName;     // String para o nome da peça
         protected bool? colourBlack;    // Boolean que checka se peça é preta ou branca
         protected bool check;           // Bool para se a peça estiver em posição de check
-       
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
         //*                                                                                                                    *//  
         //*                                                      Métodos                                                       *//    

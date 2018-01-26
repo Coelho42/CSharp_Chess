@@ -9,6 +9,22 @@ namespace Xadrez
 {
     class Peao : Peca
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        //*                                                                                                                    *//  
+        //*                                                     Construtor                                                     *//    
+        //*                                                                                                                    *//             
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      
+        /// <summary>
+        /// Construtor para criar um peao
+        /// </summary>
+        /// <param name="pieceName">nome da peça</param>
+        /// <param name="colourBlack">cor da peça</param>
+        public Peao(string pieceName, bool colourBlack)
+        {
+            this.pieceName = pieceName;
+            this.colourBlack = colourBlack;
+        }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
         //*                                                                                                                    *//  

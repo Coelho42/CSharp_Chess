@@ -110,9 +110,7 @@ namespace Xadrez
                         // Se o valor j (linhas) for igual a 0 ou 7
                         if (j == 0 || j == 7)
                         {
-                            tabuleiro[i, j] = new Torre();                                       // Cria uma Peca do tipo Torre
-                            tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
-                            tabuleiro[i, j].setpieceName("Torre");                               // Dá à peca o nome de Torre
+                            tabuleiro[i, j] = new Torre("Torre", true);                          // Cria uma Peca do tipo Torre                          
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
@@ -120,9 +118,7 @@ namespace Xadrez
                         // Se o valor j (linhas) for igual a 1 ou 6
                         if (j == 1 || j == 6)
                         {
-                            tabuleiro[i, j] = new Cavalo();                                      // Cria uma Peca do tipo Cavalo
-                            tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
-                            tabuleiro[i, j].setpieceName("Cavalo");                              // Dá à peca o nome de Cavalo
+                            tabuleiro[i, j] = new Cavalo("Cavalo", true);                        // Cria uma Peca do tipo Cavalo                         
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
@@ -130,9 +126,7 @@ namespace Xadrez
                         // Se o valor j (linhas) for igual a 2 ou 5
                         if (j == 2 || j == 5)
                         {
-                            tabuleiro[i, j] = new Bispo();                                       // Cria uma Peca do tipo Bispo
-                            tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
-                            tabuleiro[i, j].setpieceName("Bispo");                               // Dá à peca o nome de Bispo
+                            tabuleiro[i, j] = new Bispo("Bispo", true);                          // Cria uma Peca do tipo Bispo                
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
@@ -140,9 +134,7 @@ namespace Xadrez
                         // Se o valor j (linhas) for igual a 3
                         if (j == 3)
                         {
-                            tabuleiro[i, j] = new Rainha();                                      // Cria uma Peca do tipo Rainha
-                            tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
-                            tabuleiro[i, j].setpieceName("Rainha");                              // Dá à peca o nome de Rainha
+                            tabuleiro[i, j] = new Rainha("Rainha", true);                        // Cria uma Peca do tipo Rainha                        
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
@@ -150,9 +142,7 @@ namespace Xadrez
                         // Se o valor j (linhas) for igual a 4
                         if (j == 4)
                         {
-                            tabuleiro[i, j] = new Rei();                                         // Cria uma Peca do tipo Rei
-                            tabuleiro[i, j].setcolourBlack(true);                                // Dá à peca a cor preta
-                            tabuleiro[i, j].setpieceName("Rei");                                 // Dá à peca o nome de Rei
+                            tabuleiro[i, j] = new Rei("Rei", true);                              // Cria uma Peca do tipo Rei                      
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
@@ -161,9 +151,7 @@ namespace Xadrez
                     // Se o valor i (colunas) for igual a 1
                     if (i == 1)
                     {
-                        tabuleiro[i, j] = new Peao();                                            // Cria uma Peca do tipo Peão
-                        tabuleiro[i, j].setcolourBlack(true);                                    // Dá à peca a cor preta
-                        tabuleiro[i, j].setpieceName("Peão");                                    // Dá à peca o nome de Peão
+                        tabuleiro[i, j] = new Peao("Peão", true);                                // Cria uma Peca do tipo Peão                  
                         tabuleiro[i, j].Size = pictureBoxSize;                                   // Dá à PictureBox o size 70 por 70
                         tabuleiro[i, j].Click += pieceClick;                                     // Executa o método que permite as peças se moverem 
                     }
@@ -171,9 +159,7 @@ namespace Xadrez
                     // Se o valor i (colunas) for igual a 6
                     if (i == 6)
                     {
-                        tabuleiro[i, j] = new Peao();                                            // Cria uma Peca do tipo Peão
-                        tabuleiro[i, j].setcolourBlack(false);                                   // Dá à peca a cor branca
-                        tabuleiro[i, j].setpieceName("Peão");                                    // Dá à peca o nome de Peão
+                        tabuleiro[i, j] = new Peao("Peão", false);                               // Cria uma Peca do tipo Peão           
                         tabuleiro[i, j].Size = pictureBoxSize;                                   // Dá à PictureBox o size 70 por 70
                         tabuleiro[i, j].Click += pieceClick;                                     // Executa o método que permite as peças se moverem 
                     }
@@ -184,9 +170,7 @@ namespace Xadrez
                         // Se o valor j (linhas) for igual a 0 ou 7
                         if (j == 0 || j == 7)
                         {
-                            tabuleiro[i, j] = new Torre();                                       // Cria uma Peca do tipo Torre
-                            tabuleiro[i, j].setcolourBlack(false);                               // Dá à peca a cor branca
-                            tabuleiro[i, j].setpieceName("Torre");                               // Dá à peca o nome de Torre
+                            tabuleiro[i, j] = new Torre("Torre", false);                         // Cria uma Peca do tipo Torre                       
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
                         }
@@ -194,9 +178,7 @@ namespace Xadrez
                         // Se o valor j (linhas) for igual a 1 ou 6
                         if (j == 1 || j == 6)
                         {
-                            tabuleiro[i, j] = new Cavalo();                                      // Cria uma Peca do tipo Cavalo
-                            tabuleiro[i, j].setcolourBlack(false);                               // Dá à peca a cor branca
-                            tabuleiro[i, j].setpieceName("Cavalo");                              // Dá à peca o nome de Cavalo
+                            tabuleiro[i, j] = new Cavalo("Cavalo", false);                       // Cria uma Peca do tipo Cavalo                     
                             tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
                             tabuleiro[i, j].Click += pieceClick;                                 // Executa o método que permite as peças se moverem 
 
@@ -205,9 +187,7 @@ namespace Xadrez
                         // Se o valor j (linhas) for igual a 2 ou 5
                         if (j == 2 || j == 5)
                         {
-                            tabuleiro[i, j] = new Bispo();                                        // Cria uma Peca do tipo Bispo
-                            tabuleiro[i, j].setcolourBlack(false);                                // Dá à peca a cor branca
-                            tabuleiro[i, j].setpieceName("Bispo");                                // Dá à peca o nome de Bispo
+                            tabuleiro[i, j] = new Bispo("Bispo", false);                          // Cria uma Peca do tipo Bispo
                             tabuleiro[i, j].Size = pictureBoxSize;                                // Dá à PictureBox o size 70 por 70
                             tabuleiro[i, j].Click += pieceClick;                                  // Executa o método que permite as peças se moverem 
                         }
@@ -215,9 +195,7 @@ namespace Xadrez
                         // Se o valor j (linhas) for igual a 3
                         if (j == 3)
                         {
-                            tabuleiro[i, j] = new Rainha();                                       // Cria uma Peca do tipo Rainha
-                            tabuleiro[i, j].setcolourBlack(false);                                // Dá à peca a cor branca
-                            tabuleiro[i, j].setpieceName("Rainha");                               // Dá à peca o nome de Rainha
+                            tabuleiro[i, j] = new Rainha("Rainha", false);                        // Cria uma Peca do tipo Rainha                          
                             tabuleiro[i, j].Size = pictureBoxSize;                                // Dá à PictureBox o size 70 por 70
                             tabuleiro[i, j].Click += pieceClick;                                  // Executa o método que permite as peças se moverem 
                         }
@@ -225,9 +203,7 @@ namespace Xadrez
                         // Se o valor j (linhas) for igual a 4
                         if (j == 4)
                         {
-                            tabuleiro[i, j] = new Rei();                                          // Cria uma Peca do tipo Rei
-                            tabuleiro[i, j].setcolourBlack(false);                                // Dá à peca a cor branca
-                            tabuleiro[i, j].setpieceName("Rei");                                  // Dá à peca o nome de Rei
+                            tabuleiro[i, j] = new Rei("Rei", false);                              // Cria uma Peca do tipo Rei
                             tabuleiro[i, j].Size = pictureBoxSize;                                // Dá à PictureBox o size 70 por 70
                             tabuleiro[i, j].Click += pieceClick;                                  // Executa o método que permite as peças se moverem 
                         }

@@ -11,6 +11,30 @@ namespace Xadrez
     {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
         //*                                                                                                                    *//  
+        //*                                                     Construtor                                                     *//    
+        //*                                                                                                                    *//             
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Construtor para criar um Torre
+        /// </summary>    
+        public Torre()
+        {
+        }
+
+        /// <summary>
+        /// Construtor para criar um Torre
+        /// </summary>
+        /// <param name="pieceName">nome da peça</param>
+        /// <param name="colourBlack">cor da peça</param>
+        public Torre(string pieceName, bool colourBlack)
+        {
+            this.pieceName = pieceName;
+            this.colourBlack = colourBlack;
+
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        //*                                                                                                                    *//  
         //*                                                      Métodos                                                       *//    
         //*                                                                                                                    *//             
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

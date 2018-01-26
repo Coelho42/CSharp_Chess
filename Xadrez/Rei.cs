@@ -9,6 +9,29 @@ namespace Xadrez
 {
     class Rei : Peca
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        //*                                                                                                                    *//  
+        //*                                                     Construtor                                                     *//    
+        //*                                                                                                                    *//             
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Construtor para criar um Rei
+        /// </summary>    
+        public Rei()
+        {         
+        }
+
+        /// <summary>
+        /// Construtor para criar um Rei
+        /// </summary>
+        /// <param name="pieceName">nome da peça</param>
+        /// <param name="colourBlack">cor da peça</param>
+        public Rei(string pieceName, bool colourBlack)
+        {
+            this.pieceName = pieceName;
+            this.colourBlack = colourBlack;
+        }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
         //*                                                                                                                    *//  
