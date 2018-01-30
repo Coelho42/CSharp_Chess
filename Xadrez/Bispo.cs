@@ -17,6 +17,13 @@ namespace Xadrez
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
+        /// Construtor default do Bispo
+        /// </summary>
+        public Bispo()
+        {
+        }
+
+        /// <summary>
         /// Construtor para criar um Bispo
         /// </summary>
         /// <param name="pieceName">nome da peça</param>

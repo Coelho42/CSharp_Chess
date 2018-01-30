@@ -16,6 +16,13 @@ namespace Xadrez
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
+        /// Construtor default do Rainha
+        /// </summary>
+        public Rainha()
+        {
+        }
+
+        /// <summary>
         /// Construtor para criar um Rainha
         /// </summary>
         /// <param name="pieceName">nome da peça</param>

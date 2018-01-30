@@ -16,6 +16,13 @@ namespace Xadrez
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       
         /// <summary>
+        /// Construtor default do peão
+        /// </summary>
+        public Peao()
+        {
+        }
+
+        /// <summary>
         /// Construtor para criar um peao
         /// </summary>
         /// <param name="pieceName">nome da peça</param>

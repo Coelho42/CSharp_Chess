@@ -16,6 +16,13 @@ namespace Xadrez
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         /// <summary>
+        /// Construtor default do Cavalo
+        /// </summary>
+        public Cavalo()
+        {
+        }
+
+        /// <summary>
         /// Construtor para criar um CAvalo
         /// </summary>
         /// <param name="pieceName">nome da peça</param>

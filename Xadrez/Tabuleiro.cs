@@ -236,7 +236,7 @@ namespace Xadrez
                     }
 
                     tabuleiro[i, j].Size = pictureBoxSize;                               // Dá à PictureBox o size 70 por 70
-                    tabuleiro[i, j].SizeMode = PictureBoxSizeMode.CenterImage;           //Define o modo de apresentação da imagem de cada PictureBox
+                    tabuleiro[i, j].SizeMode = PictureBoxSizeMode.CenterImage;           // Define o modo de apresentação da imagem de cada PictureBox
                     tabuleiro[i, j].Location = new Point(coordenadaX, coordenadaY);      // Dá o valor da localização à PictureBox
                     panelFill.Controls.Add(tabuleiro[i, j]);
                     coordenadaX += 70;                                                   // Incrementa o valor do X na localização                   
@@ -474,7 +474,7 @@ namespace Xadrez
 
                                 PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça pode-se mover ou não
                                 podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça comer outra Peça ou não                            
-                                
+                    
                                 // Se a peça para onde o jogador se quer mover for null e se o bool PodeMover for true
                                 if (destinoPeca.getcolourBlack() == null && PodeMover == true)
                                 {
@@ -488,8 +488,7 @@ namespace Xadrez
                                     {
                                         // Ciclo for para as linhas do tabuleiro
                                         for (int j = 0; j < tabuleiro.GetLength(1); j++)
-                                        {
-                                            
+                                        {      
                                             if (tabuleiro[i, j].Location == pecaOrigemLocalizacao)
                                             {
                                                 tabuleiro[i, j].BackColor = CorTransparente;
@@ -502,7 +501,6 @@ namespace Xadrez
                                     firstPieceClicked = false;
                                     player1Turn = false;
                                 }
-
                                 else if (destinoPeca.getcolourBlack() == false && podeComer == true)
                                 {
                                     destinoPeca.setpieceName("Peão");
@@ -524,14 +522,14 @@ namespace Xadrez
                                             }
                                         }
                                     }
-                                    for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                    for (int i = 0; i < BlackPiecesPosition.GetLength(0); i++)
                                     {                                       
-                                        for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                        for (int j = 0; j < BlackPiecesPosition.GetLength(1); j++)
                                         {
                                             Comeu = false;
-                                            if (WhitePiecesPosition[i, j].Image == null)
+                                            if (BlackPiecesPosition[i, j].Image == null)
                                             {
-                                                WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                BlackPiecesPosition[i, j].Image = pecaDestinoImage;
                                                 Comeu = true;
                                                 break;                                                
                                             }
@@ -559,10 +557,6 @@ namespace Xadrez
                                     firstPieceClicked = false;
                                 }
                                 if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                {
-                                    destinoPeca.setcheck(true);
-                                }
-                                else
                                 {
                                     destinoPeca.setcheck(true);
                                 }
@@ -622,14 +616,14 @@ namespace Xadrez
                                                 }
                                             }
                                         }
-                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        for (int i = 0; i < BlackPiecesPosition.GetLength(0); i++)
                                         {
-                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            for (int j = 0; j < BlackPiecesPosition.GetLength(1); j++)
                                             {
                                                 Comeu = false;
-                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                if (BlackPiecesPosition[i, j].Image == null)
                                                 {
-                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    BlackPiecesPosition[i, j].Image = pecaDestinoImage;
                                                     Comeu = true;
                                                     break;
                                                 }
@@ -721,14 +715,14 @@ namespace Xadrez
                                                 }
                                             }
                                         }
-                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        for (int i = 0; i < BlackPiecesPosition.GetLength(0); i++)
                                         {
-                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            for (int j = 0; j < BlackPiecesPosition.GetLength(1); j++)
                                             {
                                                 Comeu = false;
-                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                if (BlackPiecesPosition[i, j].Image == null)
                                                 {
-                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    BlackPiecesPosition[i, j].Image = pecaDestinoImage;
                                                     Comeu = true;
                                                     break;
                                                 }
@@ -820,14 +814,14 @@ namespace Xadrez
                                                 }
                                             }
                                         }
-                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        for (int i = 0; i < BlackPiecesPosition.GetLength(0); i++)
                                         {
-                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            for (int j = 0; j < BlackPiecesPosition.GetLength(1); j++)
                                             {
                                                 Comeu = false;
-                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                if (BlackPiecesPosition[i, j].Image == null)
                                                 {
-                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    BlackPiecesPosition[i, j].Image = pecaDestinoImage;
                                                     Comeu = true;
                                                     break;
                                                 }
@@ -919,14 +913,14 @@ namespace Xadrez
                                                 }
                                             }
                                         }
-                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        for (int i = 0; i < BlackPiecesPosition.GetLength(0); i++)
                                         {
-                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            for (int j = 0; j < BlackPiecesPosition.GetLength(1); j++)
                                             {
                                                 Comeu = false;
-                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                if (BlackPiecesPosition[i, j].Image == null)
                                                 {
-                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    BlackPiecesPosition[i, j].Image = pecaDestinoImage;
                                                     Comeu = true;
                                                     break;
                                                 }
@@ -1018,14 +1012,14 @@ namespace Xadrez
                                                 }
                                             }
                                         }
-                                        for (int i = 0; i < WhitePiecesPosition.GetLength(0); i++)
+                                        for (int i = 0; i < BlackPiecesPosition.GetLength(0); i++)
                                         {
-                                            for (int j = 0; j < WhitePiecesPosition.GetLength(1); j++)
+                                            for (int j = 0; j < BlackPiecesPosition.GetLength(1); j++)
                                             {
                                                 Comeu = false;
-                                                if (WhitePiecesPosition[i, j].Image == null)
+                                                if (BlackPiecesPosition[i, j].Image == null)
                                                 {
-                                                    WhitePiecesPosition[i, j].Image = pecaDestinoImage;
+                                                    BlackPiecesPosition[i, j].Image = pecaDestinoImage;
                                                     Comeu = true;
                                                     break;
                                                 }
@@ -1641,7 +1635,7 @@ namespace Xadrez
                 }
             }
         }
-
+        #region Timers
         private void timerBlackPieces_Tick(object sender, EventArgs e)
         {
             tabuleiro[contadorTabuleiroPretoI, contadorTabuleiroPretoJ].Image = BlackPiecesPosition[contadorPretoI, contadorPretoJ].Image;
@@ -1664,6 +1658,7 @@ namespace Xadrez
             if (contadorTabuleiroPretoI == 2)
             {
                 timerBlackPieces.Stop();
+                panelFill.Enabled = true;
             }
         }
 
@@ -1690,7 +1685,9 @@ namespace Xadrez
             if (contadorTabuleiroBrancoI == 5)
             {
                 timerWhitePieces.Stop();
+                panelFill.Enabled = true;
             }
+            #endregion
         }
     }
 }

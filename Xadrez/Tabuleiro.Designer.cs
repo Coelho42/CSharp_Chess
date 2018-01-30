@@ -72,7 +72,7 @@
             this.pictureBoxTitlePiece2.BackgroundImage = global::Xadrez.Properties.Resources.Tittle_Image;
             this.pictureBoxTitlePiece2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxTitlePiece2.Location = new System.Drawing.Point(557, -2);
-            this.pictureBoxTitlePiece2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBoxTitlePiece2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxTitlePiece2.Name = "pictureBoxTitlePiece2";
             this.pictureBoxTitlePiece2.Size = new System.Drawing.Size(74, 76);
             this.pictureBoxTitlePiece2.TabIndex = 6;
@@ -86,7 +86,7 @@
             this.pictureBoxTitlePiece1.BackgroundImage = global::Xadrez.Properties.Resources.Tittle_Image;
             this.pictureBoxTitlePiece1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxTitlePiece1.Location = new System.Drawing.Point(370, -2);
-            this.pictureBoxTitlePiece1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBoxTitlePiece1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxTitlePiece1.Name = "pictureBoxTitlePiece1";
             this.pictureBoxTitlePiece1.Size = new System.Drawing.Size(75, 76);
             this.pictureBoxTitlePiece1.TabIndex = 5;
@@ -139,13 +139,12 @@
             // 
             // panelPlayer1
             // 
-            this.panelPlayer1.BackColor = System.Drawing.Color.Gray;
-            this.panelPlayer1.BackgroundImage = global::Xadrez.Properties.Resources.Player1_Background;
+            this.panelPlayer1.BackColor = System.Drawing.Color.White;
             this.panelPlayer1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelPlayer1.CausesValidation = false;
             this.panelPlayer1.Controls.Add(this.labelPlayer1);
             this.panelPlayer1.Location = new System.Drawing.Point(578, 0);
-            this.panelPlayer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelPlayer1.Margin = new System.Windows.Forms.Padding(2);
             this.panelPlayer1.Name = "panelPlayer1";
             this.panelPlayer1.Size = new System.Drawing.Size(380, 283);
             this.panelPlayer1.TabIndex = 161;
@@ -170,20 +169,20 @@
             this.panelFill.Controls.Add(this.panelPlayer2);
             this.panelFill.Controls.Add(this.panelPlayer1);
             this.panelFill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFill.Enabled = false;
             this.panelFill.Location = new System.Drawing.Point(0, 76);
-            this.panelFill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelFill.Margin = new System.Windows.Forms.Padding(2);
             this.panelFill.Name = "panelFill";
             this.panelFill.Size = new System.Drawing.Size(960, 571);
             this.panelFill.TabIndex = 162;
             // 
             // panelPlayer2
             // 
-            this.panelPlayer2.BackColor = System.Drawing.Color.Gray;
-            this.panelPlayer2.BackgroundImage = global::Xadrez.Properties.Resources.Player2_Background;
+            this.panelPlayer2.BackColor = System.Drawing.Color.White;
             this.panelPlayer2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelPlayer2.Controls.Add(this.label1);
             this.panelPlayer2.Location = new System.Drawing.Point(578, 286);
-            this.panelPlayer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelPlayer2.Margin = new System.Windows.Forms.Padding(2);
             this.panelPlayer2.Name = "panelPlayer2";
             this.panelPlayer2.Size = new System.Drawing.Size(380, 281);
             this.panelPlayer2.TabIndex = 162;
@@ -193,9 +192,9 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(276, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 35);
@@ -222,7 +221,7 @@
             this.Controls.Add(this.panelFill);
             this.Controls.Add(this.panelTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Tabuleiro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabuleiro";
