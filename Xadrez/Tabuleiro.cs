@@ -647,10 +647,6 @@ namespace Xadrez
                                         }
                                         firstPieceClicked = false;
                                     }
-                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                    {
-                                        destinoPeca.setcheck(true);
-                                    }
                                 }
                             }
                             if (player1Turn == true)
@@ -741,11 +737,7 @@ namespace Xadrez
                                             }
                                         }
                                         firstPieceClicked = false;
-                                    }
-                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                    {
-                                        destinoPeca.setcheck(true);
-                                    }                                
+                                    }                     
                                 }
                             }
                             if (player1Turn == true)
@@ -836,11 +828,7 @@ namespace Xadrez
                                             }
                                         }
                                         firstPieceClicked = false;
-                                    }
-                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                    {
-                                        destinoPeca.setcheck(true);
-                                    }                              
+                                    }                    
                                 }
                             }
                             if (player1Turn == true)
@@ -931,11 +919,7 @@ namespace Xadrez
                                             }
                                         }
                                         firstPieceClicked = false;
-                                    }
-                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                    {
-                                        destinoPeca.setcheck(true);
-                                    }                                                              
+                                    }                                                    
                                 }
                             }
                             if (player1Turn == true)
@@ -1026,11 +1010,7 @@ namespace Xadrez
                                             }
                                         }
                                         firstPieceClicked = false;
-                                    }
-                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                    {
-                                        destinoPeca.setcheck(true);
-                                    }                                 
+                                    }                        
                                 }
                             }
                         }
@@ -1148,10 +1128,6 @@ namespace Xadrez
                                         }
                                         firstPieceClicked = false;
                                     }
-                                    if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                    {
-                                        destinoPeca.setcheck(true);
-                                    }
                                 }
                                 if (player1Turn == false)
                                 {
@@ -1242,10 +1218,6 @@ namespace Xadrez
                                                 }
                                             }
                                             firstPieceClicked = false;
-                                        }
-                                        if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                        {
-                                            destinoPeca.setcheck(true);
                                         }
                                     }
                                 }
@@ -1338,10 +1310,6 @@ namespace Xadrez
                                             }
                                             firstPieceClicked = false;
                                         }
-                                        if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                        {
-                                            destinoPeca.setcheck(true);
-                                        }
                                     }
                                 }
                                 if (player1Turn == false)
@@ -1432,10 +1400,6 @@ namespace Xadrez
                                                 }
                                             }
                                             firstPieceClicked = false;
-                                        }
-                                        if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                        {
-                                            destinoPeca.setcheck(true);
                                         }
                                     }
                                 }
@@ -1528,10 +1492,6 @@ namespace Xadrez
                                             }
                                             firstPieceClicked = false;
                                         }
-                                        if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                        {
-                                            destinoPeca.setcheck(true);
-                                        }
                                     }
                                 }
                                 if (player1Turn == false)
@@ -1622,10 +1582,6 @@ namespace Xadrez
                                                 }
                                             }
                                             firstPieceClicked = false;
-                                        }
-                                        if (destinoPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn) && destinoPeca.getpieceName() == "Rei")
-                                        {
-                                            destinoPeca.setcheck(true);
                                         }
                                     }
                                 }
