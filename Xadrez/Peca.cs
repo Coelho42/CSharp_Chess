@@ -27,6 +27,7 @@ namespace Xadrez
         protected string pieceName;     // String para o nome da peça
         protected bool? colourBlack;    // Boolean que checka se peça é preta ou branca
         protected bool check;           // Bool para se a peça estiver em posição de check
+        protected bool firstMove = true;       // Bool que verifica se é a primeira jogada da peça
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
         //*                                                                                                                    *//  
@@ -94,6 +95,16 @@ namespace Xadrez
         public bool getcheck()
         {
             return check;
+        }
+
+        public void setfirstMove(bool firstMove)
+        {
+            this.firstMove = firstMove;
+        }
+
+        public bool getfirstMove()
+        {
+            return firstMove;
         }
     }
 }

@@ -69,6 +69,7 @@ namespace Xadrez
                             if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y)
                             {
                                 canMove = true;
+                                firstMove = false;
                             }
                             // Checka se o utilizador mexeu-se duas casa para a frente
                             else if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y + 140 == pecaDestinoLocalizacao.Y)
@@ -78,10 +79,10 @@ namespace Xadrez
                                 {
                                     canMove = false;
                                 }
-
                                 else
                                 {
                                     canMove = true;
+                                    firstMove = false;
                                 }
                             }
                         }
@@ -90,6 +91,7 @@ namespace Xadrez
                             if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y)
                             {
                                 canMove = true;
+                                firstMove = false;
                             }
                         }
                     }
@@ -100,6 +102,7 @@ namespace Xadrez
                             if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y)
                             {
                                 canMove = true;
+                                firstMove = false;
                             }
 
                             else if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y - 140 == pecaDestinoLocalizacao.Y)
@@ -112,6 +115,7 @@ namespace Xadrez
                                 else
                                 {
                                     canMove = true;
+                                    firstMove = false;
                                 }
                             }
                         }
@@ -120,22 +124,20 @@ namespace Xadrez
                             if (pecaOrigemLocalizacao.X == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y)
                             {
                                 canMove = true;
+                                firstMove = false;
                             }
                         }
                     }
-
                     if (canMove == false)
                     {
                         break;
                     }
                 }
-
                 if (canMove == false)
                 {
                     break;
                 }
             }
-
             if (canMove == false)
             {
                 return false;
@@ -144,7 +146,6 @@ namespace Xadrez
             {
                 return true;
             }
-
             #endregion
         }
 
@@ -165,15 +166,16 @@ namespace Xadrez
                 // Come a peça que estiver na diagonal esquerda dos peões pretos
                 if (pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y)
                 {
+                    firstMove = false;
                     return true;
                 }
 
                 // Come a peça que estiver na diagonal direita dos peões pretos
                 else if (pecaOrigemLocalizacao.X + 70 == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y + 70 == pecaDestinoLocalizacao.Y)
                 {
+                    firstMove = false;
                     return true;
                 }
-
                 else
                 {
                     return false;
@@ -184,21 +186,21 @@ namespace Xadrez
                 // Come a peça que estiver na diagonal esquerda dos peões brancos
                 if (pecaOrigemLocalizacao.X - 70 == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y)
                 {
+                    firstMove = false;
                     return true;
                 }
 
                 // Come a peça que estiver na diagonal esquerda dos peões brancos
                 else if (pecaOrigemLocalizacao.X + 70 == pecaDestinoLocalizacao.X && pecaOrigemLocalizacao.Y - 70 == pecaDestinoLocalizacao.Y)
                 {
+                    firstMove = false;
                     return true;
                 }
-
                 else
                 {
                     return false;
                 }
             }
-
             #endregion
         }
     }

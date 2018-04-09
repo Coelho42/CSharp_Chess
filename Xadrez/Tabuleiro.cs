@@ -27,12 +27,11 @@ namespace Xadrez
         Image pecaDestinoImage;                                        // Imagem da casa para onde a peça clickada se move
         Color CorTransparente;                                         // Backgroundcolor transparente
 
-        bool PodeMover;                                                // Boolean que checka se pode mover a peça ou não
+        bool podeMover;                                                // Boolean que checka se pode mover a peça ou não
         bool firstPieceClicked = false;                                // Boolean que checka se a peça foi clickada pela primeira vez
         bool player1Turn = true;                                       // Boolean que checka se é a vez do jogador 1 ou do jogador 2
         bool podeComer;                                                // Boolean que checka se a peça pode comer ou não
         bool Comeu;                                                    // Checka se a peça comeu
-        bool checkPreto;
 
         int contadorBrancoI = 0;                                       // int para a animação das peças brancas
         int contadorBrancoJ = 0;                                       // int para a animação das peças brancas
@@ -473,14 +472,15 @@ namespace Xadrez
                             {
                                 origemPeca = new Peao();            // Toma o valor de um novo Peão
 
-                                PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça se pode mover ou não
+                                podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça se pode mover ou não
                                 podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);      // Recebe o método que indica se a Peça comer outra Peça ou não                            
                              
                                 // Se a peça para onde o jogador se quer mover for null e se o bool PodeMover for true
-                                if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                 {
                                     destinoPeca.setpieceName("Peão");       // Dá o nome ao destino da Peça
                                     destinoPeca.setcolourBlack(true);       // Dá a cor preta ao destino da Peça
+                                    destinoPeca.setfirstMove(false);        // Indica que a peça já se moveu pelo menos 1 vez
                                     destinoPeca.Image = pecaOrigemImage;    // Toma o valor da imagem da Peça selecionada
                                     sender = destinoPeca;                   // Toma o valor do destino da peça
 
@@ -506,6 +506,7 @@ namespace Xadrez
                                 {
                                     destinoPeca.setpieceName("Peão");
                                     destinoPeca.setcolourBlack(true);
+                                    destinoPeca.setfirstMove(false);
                                     pecaDestinoImage = destinoPeca.Image;   // Toma o valor da imagem da Peça destino
                                     destinoPeca.Image = pecaOrigemImage;                                    
                                     sender = destinoPeca;
@@ -565,10 +566,10 @@ namespace Xadrez
                                 {
                                     origemPeca = new Cavalo();
 
-                                    PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                    podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                     podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                    if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                    if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                     {
                                         destinoPeca.setpieceName("Cavalo");
                                         destinoPeca.setcolourBlack(true);
@@ -656,10 +657,10 @@ namespace Xadrez
                                 {
                                     origemPeca = new Bispo();
 
-                                    PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                    podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                     podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                    if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                    if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                     {
                                         destinoPeca.setpieceName("Bispo");
                                         destinoPeca.setcolourBlack(true);
@@ -747,10 +748,10 @@ namespace Xadrez
                                 {
                                     origemPeca = new Torre();
 
-                                    PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                    podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                     podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                    if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                    if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                     {
                                         destinoPeca.setpieceName("Torre");
                                         destinoPeca.setcolourBlack(true);
@@ -838,10 +839,10 @@ namespace Xadrez
                                 {
                                     origemPeca = new Rei();
 
-                                    PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                    podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                     podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                    if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                    if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                     {
                                         destinoPeca.setpieceName("Rei");
                                         destinoPeca.setcolourBlack(true);
@@ -929,10 +930,10 @@ namespace Xadrez
                                 {
                                     origemPeca = new Rainha();
 
-                                    PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                    podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                     podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                    if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                    if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                     {
                                         destinoPeca.setpieceName("Rainha");
                                         destinoPeca.setcolourBlack(true);
@@ -1046,10 +1047,10 @@ namespace Xadrez
                                 {
                                     origemPeca = new Peao();
 
-                                    PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                    podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                     podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                    if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                    if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                     {
                                         destinoPeca.setpieceName("Peão");
                                         destinoPeca.setcolourBlack(false);
@@ -1137,10 +1138,10 @@ namespace Xadrez
                                         origemPeca = new Cavalo();
 
 
-                                        PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                        podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                         podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                        if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                        if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                         {
                                             destinoPeca.setpieceName("Cavalo");
                                             destinoPeca.setcolourBlack(false);
@@ -1228,10 +1229,10 @@ namespace Xadrez
                                     {
                                         origemPeca = new Bispo();
 
-                                        PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                        podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                         podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                        if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                        if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                         {
                                             destinoPeca.setpieceName("Bispo");
                                             destinoPeca.setcolourBlack(false);
@@ -1319,10 +1320,10 @@ namespace Xadrez
                                     {
                                         origemPeca = new Torre();
 
-                                        PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                        podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                         podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                        if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                        if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                         {
                                             destinoPeca.setpieceName("Torre");
                                             destinoPeca.setcolourBlack(false);
@@ -1410,10 +1411,10 @@ namespace Xadrez
                                     {
                                         origemPeca = new Rei();
 
-                                        PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                        podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                         podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                        if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                        if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                         {
                                             destinoPeca.setpieceName("Rei");
                                             destinoPeca.setcolourBlack(false);
@@ -1501,10 +1502,10 @@ namespace Xadrez
                                     {
                                         origemPeca = new Rainha();
 
-                                        PodeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
+                                        podeMover = origemPeca.Mover(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
                                         podeComer = origemPeca.Comer(tabuleiro, pecaOrigemLocalizacao, destinoPeca.Location, player1Turn);
 
-                                        if (destinoPeca.getcolourBlack() == null && PodeMover == true)
+                                        if (destinoPeca.getcolourBlack() == null && podeMover == true)
                                         {
                                             destinoPeca.setpieceName("Rainha");
                                             destinoPeca.setcolourBlack(false);
