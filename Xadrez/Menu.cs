@@ -47,5 +47,12 @@ namespace Xadrez
             formTabuleiro.Show();
             this.Hide();
         }
+
+        private void buttonAbout_Click(object sender, EventArgs e)
+        {
+            FormAcercaDe formAcercaDe = new FormAcercaDe();
+            formAcercaDe.Show();
+            this.Hide();
+        }
     }
 }
