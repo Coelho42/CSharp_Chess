@@ -53,6 +53,6 @@ namespace Xadrez
             FormAcercaDe formAcercaDe = new FormAcercaDe();
             formAcercaDe.Show();
             this.Hide();
-        }
+        } 
     }
 }
